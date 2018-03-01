@@ -1,3 +1,2 @@
-<p>
-  map works!
-</p>
+<div class="loading" *ngIf="loading">Loading</div>
+<div class="map" id="map" [ngClass]="{'d-none': loading }"></div>

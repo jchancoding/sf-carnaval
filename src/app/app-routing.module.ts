@@ -7,10 +7,10 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { VendorsComponent } from './vendors/vendors.component';
 
 const routes: Routes = [
-  { path:  'faq', component: FaqComponent},
-  { path: 'map', component: MapComponent}, 
-  { path: 'food', component: FoodComponent}, 
-  { path: 'schedule', component: ScheduleComponent}, 
+  { path: 'faq', component: FaqComponent},
+  { path: 'map', component: MapComponent},
+  { path: 'food', component: FoodComponent},
+  { path: 'schedule', component: ScheduleComponent},
   { path: 'vendors', component: VendorsComponent}
 ];
 

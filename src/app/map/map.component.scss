@@ -1,0 +1,10 @@
+:host,
+.loading,
+.map {
+  height: calc(100vh - 82px);
+  width: 100%;
+}
+
+.loading {
+  background: rgba(255,255,255,.5);
+}
