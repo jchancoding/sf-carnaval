@@ -13,7 +13,6 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { FoodComponent } from './food/food.component';
 import { VendorsComponent } from './vendors/vendors.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
