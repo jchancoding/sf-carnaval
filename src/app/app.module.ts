@@ -18,7 +18,7 @@ import { VendorsComponent } from './vendors/vendors.component';
   declarations: [
     AppComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
     HeaderComponent,
     FaqComponent,
     MapComponent,
