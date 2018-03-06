@@ -5,13 +5,15 @@ import { MapComponent } from './map/map.component';
 import { FoodComponent } from './food/food.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VendorsComponent } from './vendors/vendors.component';
+import { SponsorsComponent } from './sponsors/sponsors.component';
 
 const routes: Routes = [
   { path: 'faq', component: FaqComponent},
   { path: 'map', component: MapComponent},
   { path: 'food', component: FoodComponent},
   { path: 'schedule', component: ScheduleComponent},
-  { path: 'vendors', component: VendorsComponent}
+  { path: 'vendors', component: VendorsComponent}, 
+  { path: 'sponsors', component: SponsorsComponent}
 ];
 
 @NgModule({
