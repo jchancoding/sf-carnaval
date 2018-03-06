@@ -12,6 +12,7 @@ import { MapComponent } from './map/map.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { FoodComponent } from './food/food.component';
 import { VendorsComponent } from './vendors/vendors.component';
+import { SponsorsComponent } from './sponsors/sponsors.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VendorsComponent } from './vendors/vendors.component';
     MapComponent,
     ScheduleComponent,
     FoodComponent,
-    VendorsComponent
+    VendorsComponent, 
+    SponsorsComponent
   ],
   imports: [
     BrowserModule,
