@@ -1,15 +1,34 @@
+@import "../../variables";
+
 #logo {
-    height: 150px;
+    height: 300px;
     width: auto;
+}
+.logobox {
+    height: 180px;
+    width: 100%;
+    background-image: url("/assets/images/shitBan.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .jumbotron {
     position: relative;
-    background-image: url("/assets/images/drums.jpg");
+    background-image: url("/assets/images/crowd.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     padding: 14%;
-    height: 340px;
-    color: white;
-    text-shadow: 3px 3px grey;
+    height: 380px;
+    color: $white;
+    text-shadow: 3px 2px $red;
+}
+nav {
+    background-image: url("/assets/images/navText.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.nav-link {
+    color: black;
 }
