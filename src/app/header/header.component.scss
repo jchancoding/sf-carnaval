@@ -20,9 +20,15 @@
     background-position: center center;
     padding: 14%;
     height: 380px;
-    color: white;
-    text-shadow: 3px 2px grey;
+    color: $white;
+    text-shadow: 3px 2px $red;
 }
-.navbar {
-    background: $teal;
+nav {
+    background-image: url("/assets/images/navText.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.nav-link {
+    color: black;
 }
