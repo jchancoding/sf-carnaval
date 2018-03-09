@@ -10,5 +10,12 @@ ul {
     height: 40px;
     width: auto;
 }
+.footer {
+    background-image: url("/assets/images/footerText.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 @media screen and (max-width: 500) {
 }
