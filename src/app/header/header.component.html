@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="row justify-content-center my-3">
-    <img id="logo" src="/assets/images/logo.png" alt="Carnaval Logo">
+    <a [routerLink]="['/']">
+      <img id="logo" src="/assets/images/logo.png" alt="Carnaval Logo">
+    </a>
   </div>
 </div>
 
@@ -9,10 +11,12 @@
   <p>Come join the festival!</p>
 </div>
 
-<!-- Change href to router links when components are up -->
 <nav class="navbar navbar-expand-sm bg-light navbar-light mb-3">
-  <ul class="navbar-nav">
+  <ul class="navbar-nav mx-auto">
     <!-- Feature to add class="active" to link currently on? -->
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/']">About</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['map']">Map</a>
     </li>

@@ -6,8 +6,10 @@ import { FoodComponent } from './food/food.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: HomeComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'map', component: MapComponent},
   { path: 'food', component: FoodComponent},
