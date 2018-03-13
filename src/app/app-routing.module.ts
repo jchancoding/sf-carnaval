@@ -8,9 +8,11 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { DirectionsComponent } from './directions/directions.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent},
+  { path: '', pathMatch: 'full', component: HomeComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'map', component: MapComponent},
   { path: 'food', component: FoodComponent},
