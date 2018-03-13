@@ -13,6 +13,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { FoodComponent } from './food/food.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { DirectionsComponent } from './directions/directions.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
     ScheduleComponent,
     FoodComponent,
     VendorsComponent, 
-    SponsorsComponent
+    SponsorsComponent, DirectionsComponent
   ],
   imports: [
     BrowserModule,
