@@ -13,6 +13,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { FoodComponent } from './food/food.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { DirectionsComponent } from './directions/directions.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -26,6 +27,8 @@ import { HomeComponent } from './home/home.component';
     ScheduleComponent,
     FoodComponent,
     VendorsComponent, 
+    SponsorsComponent, 
+    DirectionsComponent,
     SponsorsComponent,
     HomeComponent
   ],
