@@ -348,7 +348,7 @@ export class MapComponent implements OnInit {
                     "type": "Polygon",
                     "coordinates": [
                         [
-                          //marposa & 18th exhibit
+                          //s1 marposa & 18th
                           [-122.41296, 37.76278],
                           [-122.41281, 37.76279],
                           [-122.41277, 37.76232],
@@ -357,16 +357,60 @@ export class MapComponent implements OnInit {
                     ]
                 }
             }, {
+              "type": "Feature",
+              "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                      [
+                        //s2 18th & 18th
+                        [-122.41290, 37.76212],
+                        [-122.41275, 37.76213],
+                        [-122.41271, 37.76172],
+                        [-122.41286, 37.76171]
+                      ]
+                  ]
+              }
+          }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                      //s3 18th & 19th
+                      [-122.41282, 37.76136],
+                      [-122.41267, 37.76137],
+                      [-122.412596, 37.760567],
+                      [-122.41274, 37.76056]
+                    ]
+                ]
+            }
+        }] //end of features
+        },
+      }, //end of source
+      "paint": {
+        "fill-color": "#ED4C67",
+        "fill-opacity": 0.8
+      }
+      }); //end of exhibits layer
+
+      this.map.addLayer({
+        "id": "sponsors",
+        "type": "fill",
+        "source": {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [{
                 "type": "Feature",
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
                       [
-                        //18th & harrison sponsor
+                        //s1 18th & harrison sponsor west side
                         [-122.41291 , 37.76231],
                         [-122.41277 , 37.76232],
-                        [-122.41276 , 37.76225],
-                        [-122.41290 , 37.76224]
+                        [-122.412763 , 37.762246],
+                        [-122.412904 , 37.76224]
                       ]
                     ]
                 }
@@ -376,7 +420,7 @@ export class MapComponent implements OnInit {
                   "type": "Polygon",
                   "coordinates": [
                     [
-                      //mariposa & harrison sponsor
+                      //s1 mariposa & harrison sponsor
                       [-122.41297, 37.76286], 
                       [-122.41282, 37.76287],
                       [-122.41281, 37.76279],
@@ -384,14 +428,86 @@ export class MapComponent implements OnInit {
                     ]
                   ]
               }
-          }] //end of features
+          }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s2 18th & 18th sponsor
+                    [-122.412907, 37.762193], 
+                    [-122.412756, 37.76220],
+                    [-122.41275, 37.76213],
+                    [-122.41290, 37.76212]
+                  ]
+                ]
+            }
+        }, {
+          "type": "Feature",
+          "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  //s2 18th & harrison east side
+                  [-122.41286, 37.76171],
+                  [-122.41271, 37.76172],
+                  [-122.412703, 37.761638],
+                  [-122.41285, 37.76163]
+                ]
+              ]
+          }
+      }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                //s3 18th & harrison
+                [-122.41283, 37.76146],
+                [-122.41268, 37.76147],
+                [-122.41267, 37.76137],
+                [-122.41282, 37.76136]
+                
+              ]
+            ]
+        }
+    }, {
+      "type": "Feature",
+      "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              //s3 18th & harrison east side
+              [-122.41274, 37.76056],
+              [-122.412596, 37.760567],
+              [-122.412586, 37.760458],
+              [-122.41273, 37.76045]
+            ]
+          ]
+      }
+  }] //end of features
         },
       }, //end of source
       "paint": {
-        "fill-color": "#1289A7",
+        "fill-color": "#0652DD",
         "fill-opacity": 0.8
       }
-      }); //end of entrances layer
+      }); //end of exhibits layer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //all features above
     });
   }
 }
