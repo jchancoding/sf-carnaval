@@ -384,7 +384,21 @@ export class MapComponent implements OnInit {
                     ]
                 ]
             }
-        }] //end of features
+        }, {
+          "type": "Feature",
+          "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                  [
+                    //s4 19th & 20th
+                    [-122.41269, 37.76013],
+                    [-122.41255, 37.76014],
+                    [-122.412494, 37.75956],
+                    [-122.412633, 37.759549]
+                  ]
+              ]
+          }
+      }] //end of features
         },
       }, //end of source
       "paint": {
