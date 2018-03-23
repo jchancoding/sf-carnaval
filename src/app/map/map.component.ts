@@ -426,6 +426,20 @@ export class MapComponent implements OnInit {
                   ]
                 ]
               }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 front of Mission Rec
+                    [-122.41252, 37.75834],
+                    [-122.41238, 37.758346],
+                    [-122.41236, 37.758137],
+                    [-122.41250, 37.75813]
+                  ]
+                ]
+              }
             }] //end of features
           },
         }, //end of source
@@ -555,6 +569,20 @@ export class MapComponent implements OnInit {
                   ]
                 ]
               }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 20th and harrison (mission rec)
+                    [-122.41258, 37.75894],
+                    [-122.412436, 37.758948],
+                    [-122.41238, 37.75839],
+                    [-122.412523, 37.758385]
+                  ]
+                ]
+              }
             }] //end of features
           },
         }, //end of source
@@ -564,8 +592,102 @@ export class MapComponent implements OnInit {
         }
       }); //end of sponsors layer
 
-
-
+      this.map.addLayer({
+        "id": "bathrooms",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //treat and harrison north
+                  [-122.41326, 37.76526],
+                  [-122.41331, 37.76509]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17th and harrison
+                  [-122.41287, 37.76424],
+                  [-122.41266, 37.76425]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17th and treat
+                  [-122.41340, 37.76404],
+                  [-122.41327, 37.76410]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and treat
+                  [-122.41358, 37.76372],
+                  [-122.41365, 37.76349]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //Mariposa
+                  [-122.41265, 37.76290],
+                  [-122.41239, 37.76292]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and Harrison
+                  [-122.41332, 37.76219],
+                  [-122.41295, 37.76221]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and Harrison(west)
+                  [-122.41367, 37.76217],
+                  [-122.41341, 37.762185]
+                ]
+              }
+            }]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#12CBC4",
+          "line-width": 5
+        }
+      });
 
 
 
