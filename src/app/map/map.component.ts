@@ -339,174 +339,231 @@ export class MapComponent implements OnInit {
         "id": "exhibits",
         "type": "fill",
         "source": {
-        "type": "geojson",
-        "data": {
+          "type": "geojson",
+          "data": {
             "type": "FeatureCollection",
             "features": [{
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                          //s1 marposa & 18th
-                          [-122.41296, 37.76278],
-                          [-122.41281, 37.76279],
-                          [-122.41277, 37.76232],
-                          [-122.41291, 37.76231]
-                        ]
-                    ]
-                }
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s1 marposa & 18th
+                    [-122.41296, 37.76278],
+                    [-122.41281, 37.76279],
+                    [-122.41277, 37.76232],
+                    [-122.41291, 37.76231]
+                  ]
+                ]
+              }
             }, {
               "type": "Feature",
               "geometry": {
-                  "type": "Polygon",
-                  "coordinates": [
-                      [
-                        //s2 18th & 18th
-                        [-122.41290, 37.76212],
-                        [-122.41275, 37.76213],
-                        [-122.41271, 37.76172],
-                        [-122.41286, 37.76171]
-                      ]
-                  ]
-              }
-          }, {
-            "type": "Feature",
-            "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                      //s3 18th & 19th
-                      [-122.41282, 37.76136],
-                      [-122.41267, 37.76137],
-                      [-122.412596, 37.760567],
-                      [-122.41274, 37.76056]
-                    ]
+                  [
+                    //s2 18th & 18th
+                    [-122.41290, 37.76212],
+                    [-122.41275, 37.76213],
+                    [-122.41271, 37.76172],
+                    [-122.41286, 37.76171]
+                  ]
                 ]
-            }
-        }, {
-          "type": "Feature",
-          "geometry": {
-              "type": "Polygon",
-              "coordinates": [
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s3 18th & 19th
+                    [-122.41282, 37.76136],
+                    [-122.41267, 37.76137],
+                    [-122.412596, 37.760567],
+                    [-122.41274, 37.76056]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
                   [
                     //s4 19th & 20th
                     [-122.41269, 37.76013],
                     [-122.41255, 37.76014],
                     [-122.412494, 37.75956],
-                    [-122.412633, 37.759549]
+                    [-122.412633, 37.759555]
                   ]
-              ]
-          }
-      }] //end of features
-        },
-      }, //end of source
-      "paint": {
-        "fill-color": "#ED4C67",
-        "fill-opacity": 0.8
-      }
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 mistral & 20th
+                    [-122.41263, 37.759503],
+                    [-122.41249, 37.75951],
+                    [-122.41247, 37.75930],
+                    [-122.41261, 37.759294]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 mistral & 20th (small south)
+                    [-122.412603, 37.75921],
+                    [-122.412463, 37.759218],
+                    [-122.412456, 37.759138],
+                    [-122.412595, 37.75913]
+                  ]
+                ]
+              }
+            }] //end of features
+          },
+        }, //end of source
+        "paint": {
+          "fill-color": "#ED4C67",
+          "fill-opacity": 0.8
+        }
       }); //end of exhibits layer
 
       this.map.addLayer({
         "id": "sponsors",
         "type": "fill",
         "source": {
-        "type": "geojson",
-        "data": {
+          "type": "geojson",
+          "data": {
             "type": "FeatureCollection",
             "features": [{
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                      [
-                        //s1 18th & harrison sponsor west side
-                        [-122.41291 , 37.76231],
-                        [-122.41277 , 37.76232],
-                        [-122.412763 , 37.762246],
-                        [-122.412904 , 37.76224]
-                      ]
-                    ]
-                }
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s1 18th & harrison sponsor west side
+                    [-122.41291, 37.76231],
+                    [-122.41277, 37.76232],
+                    [-122.412763, 37.762246],
+                    [-122.412904, 37.76224]
+                  ]
+                ]
+              }
             }, {
               "type": "Feature",
               "geometry": {
-                  "type": "Polygon",
-                  "coordinates": [
-                    [
-                      //s1 mariposa & harrison sponsor
-                      [-122.41297, 37.76286], 
-                      [-122.41282, 37.76287],
-                      [-122.41281, 37.76279],
-                      [-122.41296, 37.76278]
-                    ]
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s1 mariposa & harrison sponsor
+                    [-122.41297, 37.76286],
+                    [-122.41282, 37.76287],
+                    [-122.41281, 37.76279],
+                    [-122.41296, 37.76278]
                   ]
+                ]
               }
-          }, {
-            "type": "Feature",
-            "geometry": {
+            }, {
+              "type": "Feature",
+              "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                   [
                     //s2 18th & 18th sponsor
-                    [-122.412907, 37.762193], 
+                    [-122.412907, 37.762193],
                     [-122.412756, 37.76220],
                     [-122.41275, 37.76213],
                     [-122.41290, 37.76212]
                   ]
                 ]
-            }
-        }, {
-          "type": "Feature",
-          "geometry": {
-              "type": "Polygon",
-              "coordinates": [
-                [
-                  //s2 18th & harrison east side
-                  [-122.41286, 37.76171],
-                  [-122.41271, 37.76172],
-                  [-122.412703, 37.761638],
-                  [-122.41285, 37.76163]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s2 18th & harrison east side sponsor
+                    [-122.41286, 37.76171],
+                    [-122.41271, 37.76172],
+                    [-122.412703, 37.761638],
+                    [-122.41285, 37.76163]
+                  ]
                 ]
-              ]
-          }
-      }, {
-        "type": "Feature",
-        "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                //s3 18th & harrison
-                [-122.41283, 37.76146],
-                [-122.41268, 37.76147],
-                [-122.41267, 37.76137],
-                [-122.41282, 37.76136]
-                
-              ]
-            ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s3 18th & harrison sponsor
+                    [-122.41283, 37.76146],
+                    [-122.41268, 37.76147],
+                    [-122.41267, 37.76137],
+                    [-122.41282, 37.76136]
+
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s3 18th & harrison east side sponsor
+                    [-122.41274, 37.76056],
+                    [-122.412596, 37.760567],
+                    [-122.412586, 37.760458],
+                    [-122.41273, 37.76045]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 19th & harrison sponsor
+                    [-122.41270, 37.760215],
+                    [-122.412558, 37.760223],
+                    [-122.41255, 37.760132],
+                    [-122.41269, 37.76013]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //s4 mistral & 20th sponsor
+                    [-122.41261, 37.759294],
+                    [-122.41247, 37.75930],
+                    [-122.412463, 37.759218],
+                    [-122.412603, 37.75921]
+                  ]
+                ]
+              }
+            }] //end of features
+          },
+        }, //end of source
+        "paint": {
+          "fill-color": "#0652DD",
+          "fill-opacity": 0.8
         }
-    }, {
-      "type": "Feature",
-      "geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              //s3 18th & harrison east side
-              [-122.41274, 37.76056],
-              [-122.412596, 37.760567],
-              [-122.412586, 37.760458],
-              [-122.41273, 37.76045]
-            ]
-          ]
-      }
-  }] //end of features
-        },
-      }, //end of source
-      "paint": {
-        "fill-color": "#0652DD",
-        "fill-opacity": 0.8
-      }
-      }); //end of exhibits layer
+      }); //end of sponsors layer
+
 
 
 
