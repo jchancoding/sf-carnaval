@@ -93,7 +93,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(0, 148, 50, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of parade line
 
       // Add line for Festival
       this.map.addLayer({
@@ -121,7 +121,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(6, 82, 221, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of festival line layer
 
       // Add line for Destaging Area
       this.map.addLayer({
@@ -150,7 +150,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(255, 196, 18, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of destaging area layer
 
       // Add line for Staging Area
       this.map.addLayer({
@@ -204,50 +204,8 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(237, 76, 103, 0.5)",
           "line-width": 8
         }
-      });
-      
-      this.map.addLayer({ //
-        "id": "testpoly",
-        "type": "fill",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                  [
-                    [-122.419667, 37.765068], //16xValencia NW
-                    [-122.417572, 37.765195], //16xVan Ness NE
-                    [-122.417384, 37.763588], //SW
-                    [-122.419532, 37.763456] //SE
-                  ]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                  [
-                    [-122.419512, 37.763431],
-                    [-122.417452, 37.763511],
-                    [-122.417237, 37.762051],
-                    [-122.419297, 37.761948]
-                  ]
-                ]
-              }
-            }] //end of features
-          },
-        }, //end of source
-        "paint": {
-          "fill-color": "#888888",
-          "fill-opacity": 0.8
-        }
-      }); //end of layer
 
+      });// end of staging area layer
 
       //venue layers from below this point
       this.map.addLayer({ //entrances layer
@@ -335,7 +293,6 @@ export class MapComponent implements OnInit {
           "fill-opacity": 0.8
         }
       }); //end of entrances layer
-
 
       this.map.addLayer({ //exhibits layer
         "id": "exhibits",
@@ -833,7 +790,8 @@ export class MapComponent implements OnInit {
           "line-width": 5
         }
       });
-
+      }); // end of bathrooms layer
+    
       this.map.addLayer({ //stages layer
         "id": "stages",
         "type": "fill",
@@ -934,14 +892,198 @@ export class MapComponent implements OnInit {
         }
       }); //end of exhibits layer
 
+      this.map.addLayer({ //ninolandia layer
+        "id": "ninolandia",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //22nd & Harrison intersection
+                  [-122.41225, 37.75581],
+                  //23rd & Harrison intersection
+                  [-122.41210, 37.75427]
+                ]
+              }
+            }, ]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#C4E538",
+          "line-width": 8
+        }
+      }); // end of ninolandia layer
 
+      this.map.addLayer({ //atms layer
+        //CHANGE TO MARKER
+        "id": "atms",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17nd & Harrison ATMS 1-2
+                  [-122.413016, 37.764100],
+                  [-122.413016, 37.764053]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and Harrison ATMS 3-4
+                  [-122.412785, 37.761633],
+                  [-122.412785, 37.761613]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th and Harrison ATMS 5-6
+                  [-122.412534, 37.759050],
+                  [-122.412534, 37.759095]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st & 22nd Block ATMS 7-8
+                  [-122.412275, 37.756610],
+                  [-122.4122835, 37.756675]
 
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd & 24th Block ATMS 9-10
+                  [-122.411908, 37.752752],
+                  [-122.411906, 37.752735]
+                ]
+              }
+            }
+          ]},
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#009432",
+          "line-width": 10
+        }
+      }); // end of atms layer
 
-
-
-
-
-
+      this.map.addLayer({ //beverages layer
+        "id": "beverages",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17th & Treat Beverages
+                  [-122.413501, 37.763929],
+                  [-122.413480, 37.764010],
+                  [-122.41340, 37.76404],
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //Mariposa st Beverages
+                  [-122.41288, 37.762891],
+                  [-122.41265, 37.762907]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th st Beverages
+                  [-122.41387, 37.76216],
+                  [-122.41372, 37.762168]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th st Beverages
+                  [-122.41345, 37.75896],
+                  [-122.41329, 37.75897]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st-22nd Block Beverages
+                  [-122.412325, 37.75668],
+                  [-122.41229, 37.75628]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd st Beverages
+                  [-122.41176, 37.75428],
+                  [-122.41165, 37.75429]
+                ]
+              }
+            }
+          ]},
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#D980FA",
+          "line-width": 8
+        }
+      }); // end of beverages layer
 
       //all features above
     });
