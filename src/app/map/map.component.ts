@@ -204,6 +204,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(237, 76, 103, 0.5)",
           "line-width": 8
         }
+
       });// end of staging area layer
 
       //venue layers from below this point
