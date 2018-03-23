@@ -93,7 +93,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(0, 148, 50, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of parade line
 
       // Add line for Festival
       this.map.addLayer({
@@ -121,7 +121,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(6, 82, 221, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of festival line layer
 
       // Add line for Destaging Area
       this.map.addLayer({
@@ -150,7 +150,7 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(255, 196, 18, 0.5)",
           "line-width": 8
         }
-      });
+      }); // end of destaging area layer
 
       // Add line for Staging Area
       this.map.addLayer({
@@ -204,103 +204,61 @@ export class MapComponent implements OnInit {
           "line-color": "rgba(237, 76, 103, 0.5)",
           "line-width": 8
         }
-      });
-      
-      this.map.addLayer({
-        "id": "testpoly",
-        "type": "fill",
-        "source": {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": [{
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                          [-122.419667, 37.765068], //16xValencia NW
-                          [-122.417572, 37.765195], //16xVan Ness NE
-                          [-122.417384, 37.763588], //SW
-                          [-122.419532, 37.763456]  //SE
-                        ]
-                    ]
-                }
-            }, {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                      [
-                        [-122.419512, 37.763431],
-                        [-122.417452, 37.763511],
-                        [-122.417237, 37.762051],
-                        [-122.419297, 37.761948]
-                      ]
-                    ]
-                }
-            }] //end of features
-        },
-      }, //end of source
-      "paint": {
-        "fill-color": "#888888",
-        "fill-opacity": 0.8
-      }
-      }); //end of layer
+      });// end of staging area layer
 
       //venue layers from below this point
       this.map.addLayer({ //entrances layer
         "id": "entrances",
         "type": "fill",
         "source": {
-        "type": "geojson",
-        "data": {
+          "type": "geojson",
+          "data": {
             "type": "FeatureCollection",
             "features": [{
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                          [-122.4131930, 37.7650498], //Harrison & Treat
-                          [-122.4131837, 37.7649846],
-                          [-122.4129791, 37.7649984],
-                          [-122.4129872, 37.7650641],
-                          [-122.4131930, 37.7650498]
-                        ]
-                    ]
-                }
-            }, {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                      [
-                        [-122.4139705, 37.7622690], //Treat St & 18th
-                        [-122.4139381, 37.7620600],
-                        [-122.4138335, 37.7620663],
-                        [-122.4138684, 37.7622741],
-                        [-122.4139705, 37.7622690]
-                      ]
-                    ]
-                }
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [-122.4131930, 37.7650498], //Harrison & Treat
+                    [-122.4131837, 37.7649846],
+                    [-122.4129791, 37.7649984],
+                    [-122.4129872, 37.7650641],
+                    [-122.4131930, 37.7650498]
+                  ]
+                ]
+              }
             }, {
               "type": "Feature",
               "geometry": {
-                  "type": "Polygon",
-                  "coordinates": [
-                    [
-                      [-122.4135731, 37.7588767], //20th & Treat Ave
-                      [-122.4134746, 37.7588810],
-                      [-122.4134900, 37.7590590],
-                      [-122.4135932, 37.7590527],
-                      [-122.4135731, 37.7588767]
-                    ]
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [-122.4139705, 37.7622690], //Treat St & 18th
+                    [-122.4139381, 37.7620600],
+                    [-122.4138335, 37.7620663],
+                    [-122.4138684, 37.7622741],
+                    [-122.4139705, 37.7622690]
                   ]
+                ]
               }
-          }, {
-            "type": "Feature",
-            "geometry": {
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [-122.4135731, 37.7588767], //20th & Treat Ave
+                    [-122.4134746, 37.7588810],
+                    [-122.4134900, 37.7590590],
+                    [-122.4135932, 37.7590527],
+                    [-122.4135731, 37.7588767]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
                 "type": "Polygon",
                 "coordinates": [
                   [
@@ -311,31 +269,31 @@ export class MapComponent implements OnInit {
                     [-122.4131338, 37.7542714]
                   ]
                 ]
-            }
-        }, {
-          "type": "Feature",
-          "geometry": {
-              "type": "Polygon",
-              "coordinates": [
-                [
-                  [-122.4120851, 37.7528054], //Harrison & 24th
-                  [-122.4120702, 37.7527093],
-                  [-122.4117501, 37.7527300],
-                  [-122.4117642, 37.7528253],
-                  [-122.4120851, 37.7528054]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [-122.4120851, 37.7528054], //Harrison & 24th
+                    [-122.4120702, 37.7527093],
+                    [-122.4117501, 37.7527300],
+                    [-122.4117642, 37.7528253],
+                    [-122.4120851, 37.7528054]
+                  ]
                 ]
-              ]
-          }
-      }] //end of features
-        },
-      }, //end of source
-      "paint": {
-        "fill-color": "#EA2027",
-        "fill-opacity": 0.8
-      }
+              }
+            }] //end of features
+          },
+        }, //end of source
+        "paint": {
+          "fill-color": "#EA2027",
+          "fill-opacity": 0.8
+        }
       }); //end of entrances layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //exhibits layer
         "id": "exhibits",
         "type": "fill",
         "source": {
@@ -449,7 +407,7 @@ export class MapComponent implements OnInit {
         }
       }); //end of exhibits layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //sponsors layer
         "id": "sponsors",
         "type": "fill",
         "source": {
@@ -592,7 +550,7 @@ export class MapComponent implements OnInit {
         }
       }); //end of sponsors layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //bathrooms layer
         "id": "bathrooms",
         "type": "line",
         "source": {
@@ -616,7 +574,7 @@ export class MapComponent implements OnInit {
               "geometry": {
                 "type": "LineString",
                 "coordinates": [
-                  //17th and harrison
+                  //17th and harrison east
                   [-122.41287, 37.76424],
                   [-122.41266, 37.76425]
                 ]
@@ -627,7 +585,7 @@ export class MapComponent implements OnInit {
               "geometry": {
                 "type": "LineString",
                 "coordinates": [
-                  //17th and treat
+                  //17th and harrison west
                   [-122.41340, 37.76404],
                   [-122.41327, 37.76410]
                 ]
@@ -638,8 +596,8 @@ export class MapComponent implements OnInit {
               "geometry": {
                 "type": "LineString",
                 "coordinates": [
-                  //18th and treat
-                  [-122.41358, 37.76372],
+                  //17th and treat
+                  [-122.413596, 37.76373],
                   [-122.41365, 37.76349]
                 ]
               }
@@ -650,7 +608,7 @@ export class MapComponent implements OnInit {
                 "type": "LineString",
                 "coordinates": [
                   //Mariposa
-                  [-122.41265, 37.76290],
+                  [-122.41265, 37.762907],
                   [-122.41239, 37.76292]
                 ]
               }
@@ -676,6 +634,149 @@ export class MapComponent implements OnInit {
                   [-122.41341, 37.762185]
                 ]
               }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //19th west
+                  [-122.41318, 37.760627],
+                  [-122.41294, 37.76064]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //19th east
+                  [-122.41247, 37.760367],
+                  [-122.41219, 37.76038]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //Mistral
+                  [-122.41313, 37.760028],
+                  [-122.41287, 37.760043]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //Mistral (indoors)
+                  [-122.41345, 37.759798],
+                  [-122.41326, 37.75981]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th (west most)
+                  [-122.41316, 37.75901],
+                  [-122.41297, 37.75902]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th (west)
+                  [-122.41282, 37.759057],
+                  [-122.41259, 37.75907]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th (east)
+                  [-122.41217, 37.75908],
+                  [-122.41206, 37.759086]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st (west)
+                  [-122.41292, 37.75739],
+                  [-122.41260, 37.757406]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st (east)
+                  [-122.41220, 37.757468],
+                  [-122.41198, 37.75748]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st & 22nd (beer garden)
+                  [-122.41234, 37.75666],
+                  [-122.412334, 37.75660]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //22nd and Harrison (small)
+                  [-122.41227, 37.75597],
+                  [-122.4122657, 37.75592]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //22nd and Harrison (east)
+                  [-122.41200, 37.75587],
+                  [-122.41186, 37.755878]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd and Harrison (small)
+                  [-122.41237, 37.75424],
+                  [-122.41220, 37.75425]
+                ]
+              }
             }]
           },
         },
@@ -689,8 +790,7 @@ export class MapComponent implements OnInit {
         }
       }); // end of bathrooms layer
 
-
-      this.map.addLayer({
+      this.map.addLayer({ //ninolandia layer
         "id": "ninolandia",
         "type": "line",
         "source": {
@@ -703,9 +803,9 @@ export class MapComponent implements OnInit {
                 "type": "LineString",
                 "coordinates": [
                   //22nd & Harrison intersection
-                  [-122.412248, 37.755809],
+                  [-122.41225, 37.75581],
                   //23rd & Harrison intersection
-                  [-122.412070, 37.754279]
+                  [-122.41210, 37.75427]
                 ]
               }
             }, ]
@@ -716,12 +816,12 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#D980FA",
+          "line-color": "#C4E538",
           "line-width": 8
         }
       }); // end of ninolandia layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //atms layer
         //CHANGE TO MARKER
         "id": "atms",
         "type": "line",
@@ -768,8 +868,9 @@ export class MapComponent implements OnInit {
                 "type": "LineString",
                 "coordinates": [
                   //21st & 22nd Block ATMS 7-8
-                  [-122.412293, 37.756534],
-                  [-122.412288, 37.756477]
+                  [-122.412275, 37.756610],
+                  [-122.4122835, 37.756675]
+
                 ]
               }
             }, {
@@ -796,15 +897,91 @@ export class MapComponent implements OnInit {
         }
       }); // end of atms layer
 
-
-
-
-
-
-
-
-
-
+      this.map.addLayer({ //beverages layer
+        "id": "beverages",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17th & Treat Beverages
+                  [-122.413501, 37.763929],
+                  [-122.413480, 37.764010],
+                  [-122.41340, 37.76404],
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //Mariposa st Beverages
+                  [-122.41288, 37.762891],
+                  [-122.41265, 37.762907]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th st Beverages
+                  [-122.41387, 37.76216],
+                  [-122.41372, 37.762168]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th st Beverages
+                  [-122.41345, 37.75896],
+                  [-122.41329, 37.75897]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st-22nd Block Beverages
+                  [-122.412325, 37.75668],
+                  [-122.41229, 37.75628]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd st Beverages
+                  [-122.41176, 37.75428],
+                  [-122.41165, 37.75429]
+                ]
+              }
+            }
+          ]},
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#D980FA",
+          "line-width": 8
+        }
+      }); // end of beverages layer
 
       //all features above
     });
