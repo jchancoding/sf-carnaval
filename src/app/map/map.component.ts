@@ -687,8 +687,114 @@ export class MapComponent implements OnInit {
           "line-color": "#12CBC4",
           "line-width": 5
         }
-      });
+      }); // end of bathrooms layer
 
+
+      this.map.addLayer({
+        "id": "ninolandia",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //22nd & Harrison intersection
+                  [-122.412248, 37.755809],
+                  //23rd & Harrison intersection
+                  [-122.412070, 37.754279]
+                ]
+              }
+            }, ]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#D980FA",
+          "line-width": 8
+        }
+      }); // end of ninolandia layer
+
+      this.map.addLayer({
+        //CHANGE TO MARKER
+        "id": "atms",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17nd & Harrison ATMS 1-2
+                  [-122.413016, 37.764100],
+                  [-122.413016, 37.764053]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and Harrison ATMS 3-4
+                  [-122.412785, 37.761633],
+                  [-122.412785, 37.761613]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th and Harrison ATMS 5-6
+                  [-122.412534, 37.759050],
+                  [-122.412534, 37.759095]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st & 22nd Block ATMS 7-8
+                  [-122.412293, 37.756534],
+                  [-122.412288, 37.756477]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd & 24th Block ATMS 9-10
+                  [-122.411908, 37.752752],
+                  [-122.411906, 37.752735]
+                ]
+              }
+            }
+          ]},
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#009432",
+          "line-width": 10
+        }
+      }); // end of atms layer
 
 
 
