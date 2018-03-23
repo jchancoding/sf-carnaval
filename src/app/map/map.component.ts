@@ -789,7 +789,6 @@ export class MapComponent implements OnInit {
           "line-color": "#12CBC4",
           "line-width": 5
         }
-      });
       }); // end of bathrooms layer
     
       this.map.addLayer({ //stages layer
