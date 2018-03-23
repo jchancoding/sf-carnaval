@@ -789,7 +789,108 @@ export class MapComponent implements OnInit {
           "line-color": "#12CBC4",
           "line-width": 5
         }
+      });
       }); // end of bathrooms layer
+    
+      this.map.addLayer({ //stages layer
+        "id": "stages",
+        "type": "fill",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //17th and harrison
+                    [-122.41311, 37.76429],
+                    [-122.41296, 37.76430],
+                    [-122.41295, 37.76421],
+                    [-122.41310, 37.76420]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //18th and harrison Radio Habana Stage
+                    [-122.41270, 37.761694],
+                    [-122.41257, 37.76170],
+                    [-122.412565, 37.761634],
+                    [-122.412695, 37.761628]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //18th and Alabama Stage
+                    [-122.412307, 37.761703],
+                    [-122.41217, 37.76171],
+                    [-122.412154, 37.761567],
+                    [-122.41229, 37.76156]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //20th and Alabama Stage
+                    [-122.41192, 37.75916],
+                    [-122.41177, 37.75917],
+                    [-122.41175, 37.75900],
+                    [-122.41190, 37.75899]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //22nd and Harrison Stage
+                    [-122.41233, 37.75607],
+                    [-122.41216, 37.75608],
+                    [-122.412153, 37.75599],
+                    [-122.412323, 37.75598]
+                  ]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    //23rd and Alabama Stage
+                    [-122.41142, 37.75432],
+                    [-122.41131, 37.75433],
+                    [-122.41130, 37.75424],
+                    [-122.41141, 37.75423]
+                  ]
+                ]
+              }
+            }] //end of features
+          },
+        }, //end of source
+        "paint": {
+          "fill-color": "#ED4C67",
+          "fill-opacity": 0.8
+        }
+      }); //end of exhibits layer
 
       this.map.addLayer({ //ninolandia layer
         "id": "ninolandia",
