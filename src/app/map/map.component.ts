@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
 
   @Input() center: [Number, Number] = [-122.412660, 37.758790];
 
-  @Input() sw: [Number, Number] = [-122.430670, 37.736913];
+  @Input() sw: [Number, Number] = [-122.427514, 37.745367];
 
   @Input() ne: [Number, Number] = [-122.400200, 37.773207];
 
@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 1,
+      zoom: 15,
       center: this.center,
       maxBounds: [this.sw, this.ne]
     });
@@ -1148,7 +1148,7 @@ export class MapComponent implements OnInit {
         }
       }); //end of food-booth layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //foodtruck layer
         "id": "food-truck",
         "type": "line",
         "source": {
