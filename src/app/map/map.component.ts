@@ -155,7 +155,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#EA2027",
+          "fill-color": "#ED4C67",
           "fill-opacity": 0.8
         }
       }); //end of entrances layer
@@ -269,7 +269,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#ED4C67",
+          "fill-color": "#EA2027",
           "fill-opacity": 0.8
         }
       }); //end of exhibits layer
@@ -412,7 +412,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#0652DD",
+          "fill-color": "#EE5A24",
           "fill-opacity": 0.8
         }
       }); //end of sponsors layer
@@ -652,7 +652,7 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#12CBC4",
+          "line-color": "#0652DD",
           "line-width": 5
         }
       }); // end of bathrooms layer
@@ -752,7 +752,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#ED4C67",
+          "fill-color": "#0652DD",
           "fill-opacity": 0.8
         }
       }); //end of exhibits layer
@@ -783,86 +783,10 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#C4E538",
+          "line-color": "#FFC312",
           "line-width": 8
         }
       }); // end of ninolandia layer
-
-      this.map.addLayer({ //atms layer
-        //CHANGE TO MARKER
-        "id": "atms",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //17nd & Harrison ATMS 1-2
-                  [-122.413016, 37.764100],
-                  [-122.413016, 37.764053]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //18th and Harrison ATMS 3-4
-                  [-122.412785, 37.761633],
-                  [-122.412785, 37.761613]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //20th and Harrison ATMS 5-6
-                  [-122.412534, 37.759050],
-                  [-122.412534, 37.759095]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //21st & 22nd Block ATMS 7-8
-                  [-122.412275, 37.756610],
-                  [-122.4122835, 37.756675]
-
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //23rd & 24th Block ATMS 9-10
-                  [-122.411908, 37.752752],
-                  [-122.411906, 37.752735]
-                ]
-              }
-            }
-          ]},
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "butt"
-        },
-        "paint": {
-          "line-color": "#009432",
-          "line-width": 10
-        }
-      }); // end of atms layer
 
       this.map.addLayer({ //beverages layer
         "id": "beverages",
@@ -945,7 +869,7 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#D980FA",
+          "line-color": "#12CBC4",
           "line-width": 8
         }
       }); // end of beverages layer
@@ -1009,7 +933,7 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#006266",
+          "line-color": "#C4E538",
           "line-width": 5
         }
       }); //end of food-booth layer
@@ -1088,6 +1012,66 @@ export class MapComponent implements OnInit {
           "line-width": 5
         }
       }); // end of food-truck layer
+
+      this.map.addLayer({ //atm layer
+        "id": "atm",
+        "type": "circle",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "geometry": {
+                "coordinates": [
+                  // 18th
+                  -122.41300519596639,
+                  37.76405982054861
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, {
+              "geometry": {
+                "coordinates": [
+                  // 19th
+                  -122.41277927232473,
+                  37.76162007034719
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, {
+              "geometry": {
+                "coordinates": [
+                  // 20th
+                  -122.41252734755867,
+                  37.75902518103881
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, {
+              "geometry": {
+                "coordinates": [
+                  // 24th
+                  -122.41239029073975,
+                  37.75756000503216
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }]
+          },
+        },
+        "paint": {
+          "circle-radius": 4,
+          "circle-color": "#A3CB38"
+        }
+      }); // end of atm layer
 
       //all features above
     });
