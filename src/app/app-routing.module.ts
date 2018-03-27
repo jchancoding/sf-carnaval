@@ -10,6 +10,8 @@ import { VendorsComponent } from './vendors/vendors.component';
 import { DirectionsComponent } from './directions/directions.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { HomeComponent } from './home/home.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent},
@@ -21,11 +23,13 @@ const routes: Routes = [
   { path: 'schedule', component: ScheduleComponent},
   { path: 'vendors', component: VendorsComponent}, 
   { path: 'directions', component: DirectionsComponent}, 
-  { path: 'sponsors', component: SponsorsComponent}
+  { path: 'sponsors', component: SponsorsComponent},
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

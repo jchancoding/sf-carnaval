@@ -61,7 +61,7 @@ export class MapComponent implements OnInit {
     //user tracking
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true
+        enableHighAccuracy: true
       },
       trackUserLocation: true
     }));
@@ -657,7 +657,7 @@ export class MapComponent implements OnInit {
           "line-opacity": 0.8
         }
       }); // end of bathrooms layer
-    
+
       this.map.addLayer({ //stages layer
         "id": "stages",
         "type": "fill",
@@ -765,7 +765,8 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
+            "features": [{
+              "type": "Feature",
               "properties": {},
               "geometry": {
                 "type": "LineString",
@@ -776,7 +777,7 @@ export class MapComponent implements OnInit {
                   [-122.41210, 37.75427]
                 ]
               }
-            }, ]
+            },]
           },
         },
         "layout": {
@@ -790,6 +791,84 @@ export class MapComponent implements OnInit {
         }
       }); // end of ninolandia layer
 
+      this.map.addLayer({ //atms layer
+        //CHANGE TO MARKER
+        "id": "atms",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //17nd & Harrison ATMS 1-2
+                  [-122.413016, 37.764100],
+                  [-122.413016, 37.764053]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //18th and Harrison ATMS 3-4
+                  [-122.412785, 37.761633],
+                  [-122.412785, 37.761613]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //20th and Harrison ATMS 5-6
+                  [-122.412534, 37.759050],
+                  [-122.412534, 37.759095]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //21st & 22nd Block ATMS 7-8
+                  [-122.412275, 37.756610],
+                  [-122.4122835, 37.756675]
+
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  //23rd & 24th Block ATMS 9-10
+                  [-122.411908, 37.752752],
+                  [-122.411906, 37.752735]
+                ]
+              }
+            }
+            ]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#009432",
+          "line-width": 10
+        }
+      }); // end of atms layer
+
       this.map.addLayer({ //beverages layer
         "id": "beverages",
         "type": "line",
@@ -797,7 +876,8 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
+            "features": [{
+              "type": "Feature",
               "properties": {},
               "geometry": {
                 "type": "LineString",
@@ -864,7 +944,8 @@ export class MapComponent implements OnInit {
                 ]
               }
             }
-          ]},
+            ]
+          },
         },
         "layout": {
           "line-join": "round",
@@ -1076,7 +1157,93 @@ export class MapComponent implements OnInit {
         }
       }); // end of atm layer
 
+      this.map.addLayer({ //lowriders layer
+        'id': 'lowriders',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              "coordinates": [
+                [
+                  [
+                    -122.41263298736841,
+                    37.75998873522147
+                  ],
+                  [
+                    -122.41305380497315,
+                    37.75996449944833
+                  ],
+                  [
+                    -122.41300364128844,
+                    37.75941809097064
+                  ],
+                  [
+                    -122.41258282368368,
+                    37.759442326912875
+                  ],
+                  [
+                    -122.41263298736841,
+                    37.75998873522147
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'fill-color': '#088',
+          'fill-opacity': 0.8
+        }
+      }); // end of lowriders layer
       //all features above
     });
   }
+
+  // Request permissions for geolocation & grab user location
+  private geoloc() {
+
+    if (navigator.geolocation) {
+      console.log('Geolocation is supported!');
+      var startPos;
+      var nudge = document.getElementById("nudge");
+
+      var showNudgeBanner = function () {
+        nudge.style.display = "block";
+      };
+
+      var hideNudgeBanner = function () {
+        nudge.style.display = "none";
+      };
+
+      var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+
+      var geoSuccess = function (position) {
+        hideNudgeBanner();
+        // We have the location, don't display banner
+        clearTimeout(nudgeTimeoutId);
+
+        // Do magic with location
+        startPos = position;
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+      };
+      var geoError = function (error) {
+        switch (error.code) {
+          case error.TIMEOUT:
+            // The user didn't accept the callout
+            showNudgeBanner();
+            break;
+        }
+      };
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    }
+    else {
+      console.log('Geolocation is not supported for this Browser/OS.');
+    }
+
+  };
 }
