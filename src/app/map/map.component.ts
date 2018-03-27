@@ -1094,6 +1094,48 @@ export class MapComponent implements OnInit {
         }
       }); // end of food-truck layer
 
+      this.map.addLayer({ //lowriders layer
+        'id': 'lowriders',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              "coordinates": [
+                [
+                  [
+                    -122.41263298736841,
+                    37.75998873522147
+                  ],
+                  [
+                    -122.41305380497315,
+                    37.75996449944833
+                  ],
+                  [
+                    -122.41300364128844,
+                    37.75941809097064
+                  ],
+                  [
+                    -122.41258282368368,
+                    37.759442326912875
+                  ],
+                  [
+                    -122.41263298736841,
+                    37.75998873522147
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'fill-color': '#088',
+          'fill-opacity': 0.8
+        }
+      }); // end of lowriders layer
       //all features above
     });
   }
