@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
 
   @Input() center: [Number, Number] = [-122.412660, 37.758790];
 
-  @Input() sw: [Number, Number] = [-122.430670, 37.736913];
+  @Input() sw: [Number, Number] = [-122.427514, 37.745367];
 
   @Input() ne: [Number, Number] = [-122.400200, 37.773207];
 
@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 1,
+      zoom: 15,
       center: this.center,
       maxBounds: [this.sw, this.ne]
     });
@@ -1083,6 +1083,145 @@ export class MapComponent implements OnInit {
           "line-width": 8
         }
       }); // end of beverages layer
+
+      this.map.addLayer({
+        "id": "food-booth",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 17th to mariposa
+                  [-122.412957033, 37.763682851],
+                  [-122.412889978, 37.762991596]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 19th to 19th
+                  [-122.412686130, 37.760633649],
+                  [-122.412645897, 37.760341021]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 20th to 21st
+                  [-122.412423274, 37.757961784],
+                  [-122.412396452, 37.757609769]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 21st to 22nd
+                  [-122.412377676, 37.757408314],
+                  [-122.412321350, 37.756854840]
+                ]
+              }
+            }]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#006266",
+          "line-width": 5
+        }
+      }); //end of food-booth layer
+
+      this.map.addLayer({ //foodtruck layer
+        "id": "food-truck",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 17th to mariposa north
+                  [-122.412989220, 37.763873687],
+                  [-122.412978491, 37.763752824]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 17th to mariposa south
+                  [-122.412903389, 37.762934345],
+                  [-122.412898025, 37.762847408]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 18th
+                  [-122.412788054, 37.761628152],
+                  [-122.412777325, 37.761585743]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 20th to 21st
+                  [-122.412396452, 37.757609769],
+                  [-122.412377676, 37.757471931]
+                ]
+              }
+            }, {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  // 23rd
+                  [-122.411956569, 37.754252820],
+                  [-122.411894878, 37.754261303]
+                ]
+              }
+            }]
+          },
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "butt"
+        },
+        "paint": {
+          "line-color": "#5758BB",
+          "line-width": 5
+        }
+      }); // end of food-truck layer
 
       //all features above
     });
