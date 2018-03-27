@@ -155,7 +155,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#ED4C67",
+          "fill-color": "#F76C04",
           "fill-opacity": 0.8
         }
       }); //end of entrances layer
@@ -269,7 +269,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#EA2027",
+          "fill-color": "#FD3468",
           "fill-opacity": 0.8
         }
       }); //end of exhibits layer
@@ -412,7 +412,7 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#EE5A24",
+          "fill-color": "#6ADC07",
           "fill-opacity": 0.8
         }
       }); //end of sponsors layer
@@ -652,8 +652,9 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#0652DD",
-          "line-width": 5
+          "line-color": "#0041D7",
+          "line-width": 6,
+          "line-opacity": 0.8
         }
       }); // end of bathrooms layer
     
@@ -752,10 +753,10 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#0652DD",
+          "fill-color": "#B806AD",
           "fill-opacity": 0.8
         }
-      }); //end of exhibits layer
+      }); //end of stages layer
 
       this.map.addLayer({ //ninolandia layer
         "id": "ninolandia",
@@ -784,7 +785,8 @@ export class MapComponent implements OnInit {
         },
         "paint": {
           "line-color": "#FFC312",
-          "line-width": 8
+          "line-width": 8,
+          "line-opacity": 0.8
         }
       }); // end of ninolandia layer
 
@@ -869,8 +871,9 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#12CBC4",
-          "line-width": 8
+          "line-color": "#F8E401",
+          "line-width": 6,
+          "line-opacity": 0.8
         }
       }); // end of beverages layer
 
@@ -933,7 +936,7 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#C4E538",
+          "line-color": "#00B1FC",
           "line-width": 5
         }
       }); //end of food-booth layer
@@ -1008,7 +1011,7 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#5758BB",
+          "line-color": "#FE4101",
           "line-width": 5
         }
       }); // end of food-truck layer
