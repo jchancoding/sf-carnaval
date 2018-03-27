@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
 
   @Input() center: [Number, Number] = [-122.412660, 37.758790];
 
-  @Input() sw: [Number, Number] = [-122.430670, 37.736913];
+  @Input() sw: [Number, Number] = [-122.427514, 37.745367];
 
   @Input() ne: [Number, Number] = [-122.400200, 37.773207];
 
@@ -53,10 +53,18 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 1,
+      zoom: 14.8,
       center: this.center,
-      maxBounds: [this.sw, this.ne]
+      //maxBounds: [this.sw, this.ne]
     });
+
+    //user tracking
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
 
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
@@ -64,148 +72,6 @@ export class MapComponent implements OnInit {
     // Toggle loading symbol
     this.map.on('load', (event) => {
       this.loading = false;
-      
-      // Add line for parade
-      this.map.addLayer({
-        "id": "parade",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.411904, 37.752642],
-                [-122.418434, 37.752236],
-                [-122.419868, 37.766687],
-                [-122.413295, 37.767095]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(0, 148, 50, 0.5)",
-          "line-width": 8
-        }
-      }); // end of parade line
-
-      // Add line for Festival
-      this.map.addLayer({
-        "id": "festival",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.411904, 37.752642],
-                [-122.413192, 37.765445]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(6, 82, 221, 0.5)",
-          "line-width": 8
-        }
-      }); // end of festival line layer
-
-      // Add line for Destaging Area
-      this.map.addLayer({
-        "id": "destage",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.413295, 37.767095],
-                [-122.413192, 37.765445],
-                [-122.412564, 37.766856]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(255, 196, 18, 0.5)",
-          "line-width": 8
-        }
-      }); // end of destaging area layer
-
-      // Add line for Staging Area
-      this.map.addLayer({
-        "id": "stage1",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.410384, 37.764326],
-                [-122.408748, 37.748486],  
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(237, 76, 103, 0.5)",
-          "line-width": 8
-        }
-      });
-      this.map.addLayer({
-        "id": "stage2",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.408216, 37.752867], 
-                [-122.411904, 37.752642]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(237, 76, 103, 0.5)",
-          "line-width": 8
-        }
-
-      });// end of staging area layer
 
       //venue layers from below this point
       this.map.addLayer({ //entrances layer
@@ -1148,7 +1014,7 @@ export class MapComponent implements OnInit {
         }
       }); //end of food-booth layer
 
-      this.map.addLayer({
+      this.map.addLayer({ //foodtruck layer
         "id": "food-truck",
         "type": "line",
         "source": {
