@@ -61,7 +61,7 @@ export class MapComponent implements OnInit {
     //user tracking
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
-          enableHighAccuracy: true
+        enableHighAccuracy: true
       },
       trackUserLocation: true
     }));
@@ -656,7 +656,7 @@ export class MapComponent implements OnInit {
           "line-width": 5
         }
       }); // end of bathrooms layer
-    
+
       this.map.addLayer({ //stages layer
         "id": "stages",
         "type": "fill",
@@ -764,7 +764,8 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
+            "features": [{
+              "type": "Feature",
               "properties": {},
               "geometry": {
                 "type": "LineString",
@@ -775,7 +776,7 @@ export class MapComponent implements OnInit {
                   [-122.41210, 37.75427]
                 ]
               }
-            }, ]
+            },]
           },
         },
         "layout": {
@@ -796,7 +797,8 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
+            "features": [{
+              "type": "Feature",
               "properties": {},
               "geometry": {
                 "type": "LineString",
@@ -852,7 +854,8 @@ export class MapComponent implements OnInit {
                 ]
               }
             }
-          ]},
+            ]
+          },
         },
         "layout": {
           "line-join": "round",
@@ -871,7 +874,8 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
+            "features": [{
+              "type": "Feature",
               "properties": {},
               "geometry": {
                 "type": "LineString",
@@ -938,7 +942,8 @@ export class MapComponent implements OnInit {
                 ]
               }
             }
-          ]},
+            ]
+          },
         },
         "layout": {
           "line-join": "round",
@@ -1092,4 +1097,48 @@ export class MapComponent implements OnInit {
       //all features above
     });
   }
+
+  // Request permissions for geolocation & grab user location
+  private geoloc() {
+
+    if (navigator.geolocation) {
+      console.log('Geolocation is supported!');
+      var startPos;
+      var nudge = document.getElementById("nudge");
+
+      var showNudgeBanner = function () {
+        nudge.style.display = "block";
+      };
+
+      var hideNudgeBanner = function () {
+        nudge.style.display = "none";
+      };
+
+      var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+
+      var geoSuccess = function (position) {
+        hideNudgeBanner();
+        // We have the location, don't display banner
+        clearTimeout(nudgeTimeoutId);
+
+        // Do magic with location
+        startPos = position;
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+      };
+      var geoError = function (error) {
+        switch (error.code) {
+          case error.TIMEOUT:
+            // The user didn't accept the callout
+            showNudgeBanner();
+            break;
+        }
+      };
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    }
+    else {
+      console.log('Geolocation is not supported for this Browser/OS.');
+    }
+
+  };
 }
