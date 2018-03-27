@@ -15,6 +15,7 @@ import { VendorsComponent } from './vendors/vendors.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { DirectionsComponent } from './directions/directions.component';
 import { HomeComponent } from './home/home.component';
+import { ParadeComponent } from './parade/parade.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HomeComponent } from './home/home.component';
     SponsorsComponent, 
     DirectionsComponent,
     SponsorsComponent,
-    HomeComponent
+    HomeComponent,
+    ParadeComponent
   ],
   imports: [
     BrowserModule,
