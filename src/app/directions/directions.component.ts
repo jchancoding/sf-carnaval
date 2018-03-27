@@ -11,5 +11,6 @@ export class DirectionsComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
 }

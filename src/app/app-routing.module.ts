@@ -21,7 +21,9 @@ const routes: Routes = [
   { path: 'schedule', component: ScheduleComponent},
   { path: 'vendors', component: VendorsComponent}, 
   { path: 'directions', component: DirectionsComponent}, 
-  { path: 'sponsors', component: SponsorsComponent}
+  { path: 'sponsors', component: SponsorsComponent},
+  { path: '', component: HomeComponent}
+
 ];
 
 @NgModule({
