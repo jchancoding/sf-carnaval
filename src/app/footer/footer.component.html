@@ -1,4 +1,4 @@
-<footer class="footer mt-4">
+<!-- <footer class="footer mt-4">
   <div class="container-fluid">
     <div class="row py-3 justify-content-center" id="mediaIcons">
       <i class="far fa-sun fa-2x fa-fw"></i>
@@ -15,31 +15,49 @@
       <div class="col-12 col-sm-6 col-md-4">
         <ul class="list-unstyled">
           <li>
-            <a href="#"><strong>Carnival</strong></a>
+            <strong class="text-secondary">Carnaval SF</strong>
           </li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Directions</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['/']">About</a>
+          </li>
+          <li >
+            <a class="text-muted nav-item" [routerLink]="['directions']">Directions</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['faq']">FAQ</a>
+          </li>
         </ul>
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <ul class="list-unstyled">
           <li>
-            <a href="#"><strong>Events</strong></a>
+            <strong class="text-secondary">Events</strong>
           </li>
-          <li><a href="#">Vendors & Exhibitors</a></li>
-          <li><a href="#">Parade</a></li>
-          <li><a href="#">Schedule</a></li>
-          <li><a href="#">Map</a></li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['schedule']">Schedule</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['map']">Festival Map</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['parade']">Parade Map</a>
+          </li>
         </ul>
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <ul class="list-unstyled">
           <li>
-            <a href="#"><strong>Food</strong></a>
+            <strong class="text-secondary">Amenities</strong>
           </li>
-          <li><a href="#">Trucks</a></li>
-          <li><a href="#">Drinks</a></li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['vendors']">Vendors & Exhibitors</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['food']">Food</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['food']">Drinks</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -51,4 +69,103 @@
     </div>
 
   </div>
+</footer>  -->
+
+<!--Footer-->
+<footer class="footer page-footer font-small stylish-color-dark pt-4 mt-4">
+
+  <div class="container text-center text-md-left">
+    <!--Social buttons-->
+    <div class="text-center">
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm mx-1 text-dark" href="https://www.facebook.com/CarnavalSanFrancisco" target="_blank">
+            <i class="fab fa-facebook-square fa-2x fa-fw"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm mx-1 text-dark" href="https://twitter.com/carnavalsf" target="_blank">
+            <i class="fab fa-twitter-square fa-2x fa-fw"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm mx-1 text-dark" href="http://instagr.am/carnavalsf" target="_blank">
+            <i class="fab fa-instagram fa-2x fa-fw"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm mx-1 text-dark" href="http://www.youtube.com/user/carnavalsf/playlists" target="_blank">
+            <i class="fab fa-youtube fa-2x fa-fw"> </i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--/.Social Buttons-->
+
+    <!--Footer Links-->
+    <div class="row">
+      <!--First column-->
+      <div class="col-md-4 mx-auto">
+        <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Carnaval SF</h5>
+        <hr>
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['/']">About</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['directions']">Directions</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['faq']">FAQ</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.First column-->
+
+      <!--Second column-->
+      <div class="col-md-4 mx-auto">
+        <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Events</h5>
+        <hr>
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['schedule']">Schedule</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['map']">Festival Map</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['parade']">Parade Map</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.Second column-->
+
+      <!--Third column-->
+      <div class="col-md-4 mx-auto">
+        <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Amenities</h5>
+        <hr>
+        <ul class="list-unstyled">
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['vendors']">Vendors & Exhibitors</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['food']">Food</a>
+          </li>
+          <li>
+            <a class="text-muted nav-item" [routerLink]="['food']">Drinks</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.Third column-->
+
+    </div>
+    <!--/.Footer Links-->
+  </div>
+  <!--Copyright-->
+  <div class="footer-copyright py-3 text-center">
+    <small class="text-muted">2018 Carnaval | San Francisco &copy;</small>
+  </div>
+  <!--/.Copyright-->
+
 </footer>
+<!--/.Footer-->
