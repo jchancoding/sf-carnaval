@@ -1424,7 +1424,7 @@ export class MapComponent implements OnInit {
           },
         },
         "paint": {
-          "circle-radius": 4,
+          "circle-radius": 3,
           "circle-color": "#A3CB38"
         }
       }); // end of atm layer
