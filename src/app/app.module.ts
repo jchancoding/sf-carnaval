@@ -18,6 +18,7 @@ import { DirectionsComponent } from './directions/directions.component';
 import { HomeComponent } from './home/home.component';
 import { ApiService } from './api.service';
 import { FaqQuestionComponent } from './faq-question/faq-question.component';
+import { ParadeComponent } from './parade/parade.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FaqQuestionComponent } from './faq-question/faq-question.component';
     SponsorsComponent,
     HomeComponent,
     FaqQuestionComponent
+    ParadeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../environments/environment';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
+import {
+  environment
+} from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 
 @Component({
@@ -22,7 +28,7 @@ export class MapComponent implements OnInit {
 
   @Input() center: [Number, Number] = [-122.412660, 37.758790];
 
-  @Input() sw: [Number, Number] = [-122.430670, 37.736913];
+  @Input() sw: [Number, Number] = [-122.427514, 37.745367];
 
   @Input() ne: [Number, Number] = [-122.400200, 37.773207];
 
@@ -53,10 +59,24 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 1,
+      zoom: 14.8,
       center: this.center,
-      maxBounds: [this.sw, this.ne]
+      //maxBounds: [this.sw, this.ne
     });
+    
+    // disable map rotation using right click + drag
+    this.map.dragRotate.disable();
+
+    // disable map rotation using touch rotation gesture
+    this.map.touchZoomRotate.disableRotation();
+
+    //user tracking
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
 
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
@@ -64,236 +84,98 @@ export class MapComponent implements OnInit {
     // Toggle loading symbol
     this.map.on('load', (event) => {
       this.loading = false;
-      
-      // Add line for parade
-      this.map.addLayer({
-        "id": "parade",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.411904, 37.752642],
-                [-122.418434, 37.752236],
-                [-122.419868, 37.766687],
-                [-122.413295, 37.767095]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(0, 148, 50, 0.5)",
-          "line-width": 8
-        }
-      }); // end of parade line
-
-      // Add line for Festival
-      this.map.addLayer({
-        "id": "festival",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.411904, 37.752642],
-                [-122.413192, 37.765445]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(6, 82, 221, 0.5)",
-          "line-width": 8
-        }
-      }); // end of festival line layer
-
-      // Add line for Destaging Area
-      this.map.addLayer({
-        "id": "destage",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.413295, 37.767095],
-                [-122.413192, 37.765445],
-                [-122.412564, 37.766856]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(255, 196, 18, 0.5)",
-          "line-width": 8
-        }
-      }); // end of destaging area layer
-
-      // Add line for Staging Area
-      this.map.addLayer({
-        "id": "stage1",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.410384, 37.764326],
-                [-122.408748, 37.748486],  
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(237, 76, 103, 0.5)",
-          "line-width": 8
-        }
-      });
-      this.map.addLayer({
-        "id": "stage2",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "type": "LineString",
-              "coordinates": [
-                [-122.408216, 37.752867], 
-                [-122.411904, 37.752642]
-              ]
-            }
-          }
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "rgba(237, 76, 103, 0.5)",
-          "line-width": 8
-        }
-
-      });// end of staging area layer
 
       //venue layers from below this point
       this.map.addLayer({ //entrances layer
         "id": "entrances",
-        "type": "fill",
+        "type": "line",
         "source": {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
+            "features": [{ // harrison and treat
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
-                  [
-                    [-122.4131930, 37.7650498], //Harrison & Treat
-                    [-122.4131837, 37.7649846],
-                    [-122.4129791, 37.7649984],
-                    [-122.4129872, 37.7650641],
-                    [-122.4131930, 37.7650498]
+                  [-122.41319498358952,
+                    37.76499934234809
+                  ],
+                  [-122.41300261205764,
+                    37.76501008230909
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th and treat
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
-                  [
-                    [-122.4139705, 37.7622690], //Treat St & 18th
-                    [-122.4139381, 37.7620600],
-                    [-122.4138335, 37.7620663],
-                    [-122.4138684, 37.7622741],
-                    [-122.4139705, 37.7622690]
+                  [-122.41387973493144,
+                    37.76224759161056
+                  ],
+                  [-122.41386546470424,
+                    37.762095319703306
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 20th and treat
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
-                  [
-                    [-122.4135731, 37.7588767], //20th & Treat Ave
-                    [-122.4134746, 37.7588810],
-                    [-122.4134900, 37.7590590],
-                    [-122.4135932, 37.7590527],
-                    [-122.4135731, 37.7588767]
+                  [-122.41352096295195,
+                    37.75905716406815
+                  ],
+                  [-122.4135063040141,
+                    37.75890478676594
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 23rd and treat
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
-                  [
-                    [-122.4131338, 37.7542714], //23rd & Treat Ave
-                    [-122.4131043, 37.7540678],
-                    [-122.4130011, 37.7540728],
-                    [-122.4130315, 37.7542760],
-                    [-122.4131338, 37.7542714]
+                  [-122.41305051770722,
+                    37.754256213626704
+                  ],
+                  [-122.41303417953634,
+                    37.75410311504902
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 24th and harrison
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
-                  [
-                    [-122.4120851, 37.7528054], //Harrison & 24th
-                    [-122.4120702, 37.7527093],
-                    [-122.4117501, 37.7527300],
-                    [-122.4117642, 37.7528253],
-                    [-122.4120851, 37.7528054]
+                  [-122.41206198326029,
+                    37.75312241014565
+                  ],
+                  [-122.41187008035057,
+                    37.75313386136776
                   ]
-                ]
-              }
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }] //end of features
           },
         }, //end of source
+        "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+        },
         "paint": {
-          "fill-color": "#EA2027",
-          "fill-opacity": 0.8
+          "line-color": "#F76C04",
+          "line-width": 7,
+          "line-opacity": 0.8
         }
       }); //end of entrances layer
-
       this.map.addLayer({ //exhibits layer
         "id": "exhibits",
         "type": "fill",
@@ -301,113 +183,199 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
+            "features": [{ // mariposa to 18th
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s1 marposa & 18th
-                    [-122.41296, 37.76278],
-                    [-122.41281, 37.76279],
-                    [-122.41277, 37.76232],
-                    [-122.41291, 37.76231]
+                    [-122.4129496435111,
+                      37.76275205286228
+                    ],
+                    [-122.41281605649516,
+                      37.76276017659701
+                    ],
+                    [-122.41277898977586,
+                      37.76233919188499
+                    ],
+                    [-122.41291294378654,
+                      37.76233280892478
+                    ],
+                    [-122.4129496435111,
+                      37.76275205286228
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 18th
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s2 18th & 18th
-                    [-122.41290, 37.76212],
-                    [-122.41275, 37.76213],
-                    [-122.41271, 37.76172],
-                    [-122.41286, 37.76171]
+                    [
+                      -122.41289010627348,
+                      37.76211901304383
+                    ],
+                    [
+                      -122.41285825217243,
+                      37.761740861773575
+                    ],
+                    [
+                      -122.41272517695681,
+                      37.76174758197189
+                    ],
+                    [
+                      -122.41275677403551,
+                      37.762126508061385
+                    ],
+                    [
+                      -122.41289010627348,
+                      37.76211901304383
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 19th
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s3 18th & 19th
-                    [-122.41282, 37.76136],
-                    [-122.41267, 37.76137],
-                    [-122.412596, 37.760567],
-                    [-122.41274, 37.76056]
+                    [
+                      -122.41283430590283,
+                      37.761456578902354
+                    ],
+                    [
+                      -122.41269617620674,
+                      37.761463324978294
+                    ],
+                    [
+                      -122.41262727918907,
+                      37.76073152509382
+                    ],
+                    [
+                      -122.41276518690135,
+                      37.76072531697854
+                    ],
+                    [
+                      -122.41283430590283,
+                      37.761456578902354
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 19th to 20th north
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 19th & 20th
-                    [-122.41269, 37.76013],
-                    [-122.41255, 37.76014],
-                    [-122.412494, 37.75956],
-                    [-122.412633, 37.759555]
+                    [-122.41270863993874,
+                      37.76019387902903
+                    ],
+                    [-122.41257071226389,
+                      37.760199974601576
+                    ],
+                    [-122.4125135725501,
+                      37.75955063136287
+                    ],
+                    [-122.41264871580469,
+                      37.75954409999984
+                    ],
+                    [-122.41270863993874,
+                      37.76019387902903
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 19th to 20th south
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 mistral & 20th
-                    [-122.41263, 37.759503],
-                    [-122.41249, 37.75951],
-                    [-122.41247, 37.75930],
-                    [-122.41261, 37.759294]
+                    [-122.41263567317719,
+                      37.7594299519115
+                    ],
+                    [-122.41262127552739,
+                      37.75927417928905
+                    ],
+                    [-122.41248537060882,
+                      37.759280938431985
+                    ],
+                    [-122.41249951430532,
+                      37.75943691922751
+                    ],
+                    [-122.41263567317719,
+                      37.7594299519115
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { //19th to 20th southmost
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 mistral & 20th (small south)
-                    [-122.412603, 37.75921],
-                    [-122.412463, 37.759218],
-                    [-122.412456, 37.759138],
-                    [-122.412595, 37.75913]
+                    [-122.41261158693233,
+                      37.75918246285262
+                    ],
+                    [-122.41260552917787,
+                      37.759112673390135
+                    ],
+                    [-122.41246914580242,
+                      37.75912000337401
+                    ],
+                    [-122.41247566720536,
+                      37.75918870024422
+                    ],
+                    [-122.41261158693233,
+                      37.75918246285262
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 20th to 21st
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 front of Mission Rec
-                    [-122.41252, 37.75834],
-                    [-122.41238, 37.758346],
-                    [-122.41236, 37.758137],
-                    [-122.41250, 37.75813]
+                    [-122.41254457472333,
+                      37.758415484069985
+                    ],
+                    [-122.4124080969636,
+                      37.75842268267354
+                    ],
+                    [-122.41236593627718,
+                      37.75800595988299
+                    ],
+                    [-122.41250213898303,
+                      37.75799979697048
+                    ],
+                    [-122.41254457472333,
+                      37.758415484069985
+                    ]
                   ]
-                ]
-              }
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
             }] //end of features
           },
         }, //end of source
         "paint": {
-          "fill-color": "#ED4C67",
+          "fill-color": "#FD3468",
           "fill-opacity": 0.8
         }
       }); //end of exhibits layer
-
       this.map.addLayer({ //sponsors layer
         "id": "sponsors",
         "type": "fill",
@@ -415,142 +383,254 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
+            "features": [{ // mariposa to 18th north sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s1 18th & harrison sponsor west side
-                    [-122.41291, 37.76231],
-                    [-122.41277, 37.76232],
-                    [-122.412763, 37.762246],
-                    [-122.412904, 37.76224]
+                    [-122.41295428861555,
+                      37.76280536753585
+                    ],
+                    [-122.4129497371388,
+                      37.762752778197935
+                    ],
+                    [-122.41281634373178,
+                      37.762759697844686
+                    ],
+                    [-122.41282124532681,
+                      37.76281228717765
+                    ],
+                    [-122.41295428861555,
+                      37.76280536753585
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // mariposa to 18th south sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s1 mariposa & harrison sponsor
-                    [-122.41297, 37.76286],
-                    [-122.41282, 37.76287],
-                    [-122.41281, 37.76279],
-                    [-122.41296, 37.76278]
+                    [-122.41291246919256,
+                      37.76233420699937
+                    ],
+                    [-122.41290798820523,
+                      37.76227932486556
+                    ],
+                    [-122.41277436966938,
+                      37.76228600793374
+                    ],
+                    [-122.41277921938729,
+                      37.762340779592975
+                    ],
+                    [-122.41291246919256,
+                      37.76233420699937
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 18th north sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s2 18th & 18th sponsor
-                    [-122.412907, 37.762193],
-                    [-122.412756, 37.76220],
-                    [-122.41275, 37.76213],
-                    [-122.41290, 37.76212]
+                    [
+                      -122.41289466720487,
+                      37.762171841413945
+                    ],
+                    [
+                      -122.41289012310116,
+                      37.76211864790915
+                    ],
+                    [
+                      -122.41275650103766,
+                      37.76212643981812
+                    ],
+                    [
+                      -122.41276114319558,
+                      37.76217903909517
+                    ],
+                    [
+                      -122.41289466720487,
+                      37.762171841413945
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 18th south sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s2 18th & harrison east side sponsor
-                    [-122.41286, 37.76171],
-                    [-122.41271, 37.76172],
-                    [-122.412703, 37.761638],
-                    [-122.41285, 37.76163]
+                    [
+                      -122.41285863957505,
+                      37.7617418135344
+                    ],
+                    [
+                      -122.41285394570917,
+                      37.76168774215182
+                    ],
+                    [
+                      -122.4127205058087,
+                      37.76169463359871
+                    ],
+                    [
+                      -122.41272519967457,
+                      37.76174843992237
+                    ],
+                    [
+                      -122.41285863957505,
+                      37.7617418135344
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 19th north sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s3 18th & harrison sponsor
-                    [-122.41283, 37.76146],
-                    [-122.41268, 37.76147],
-                    [-122.41267, 37.76137],
-                    [-122.41282, 37.76136]
-
+                    [
+                      -122.41283917917396,
+                      37.76150958895782
+                    ],
+                    [
+                      -122.41270121305102,
+                      37.76151648053464
+                    ],
+                    [
+                      -122.41269635154173,
+                      37.76146280569182
+                    ],
+                    [
+                      -122.41283415003427,
+                      37.76145564904044
+                    ],
+                    [
+                      -122.41283917917396,
+                      37.76150958895782
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 18th to 19th south sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s3 18th & harrison east side sponsor
-                    [-122.41274, 37.76056],
-                    [-122.412596, 37.760567],
-                    [-122.412586, 37.760458],
-                    [-122.41273, 37.76045]
+                    [-122.41276530627947,
+                      37.76072585336709
+                    ],
+                    [-122.41276027289953,
+                      37.760671728511056
+                    ],
+                    [-122.41262234011776,
+                      37.760678892098255
+                    ],
+                    [-122.41262737414154,
+                      37.760732751622456
+                    ],
+                    [-122.41276530627947,
+                      37.76072585336709
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 19th to 20th north sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 19th & harrison sponsor
-                    [-122.41270, 37.760215],
-                    [-122.412558, 37.760223],
-                    [-122.41255, 37.760132],
-                    [-122.41269, 37.76013]
+                    [-122.41271294851471,
+                      37.76024632146357
+                    ],
+                    [-122.4125758399417,
+                      37.76025267093789
+                    ],
+                    [-122.4125707025895,
+                      37.760199133565706
+                    ],
+                    [-122.41270835910487,
+                      37.76019235091408
+                    ],
+                    [-122.41271294851471,
+                      37.76024632146357
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 19th to 20th south sponsor
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 mistral & 20th sponsor
-                    [-122.41261, 37.759294],
-                    [-122.41247, 37.75930],
-                    [-122.412463, 37.759218],
-                    [-122.412603, 37.75921]
+                    [-122.41262119433293,
+                      37.759274384670135
+                    ],
+                    [-122.41261165476452,
+                      37.75918205918366
+                    ],
+                    [-122.41247606070364,
+                      37.75918860931691
+                    ],
+                    [-122.41248529389742,
+                      37.75928119976929
+                    ],
+                    [-122.41262119433293,
+                      37.759274384670135
+                    ]
                   ]
-                ]
-              }
-            }, {
+                ],
+                "type": "Polygon"
+              },
               "type": "Feature",
+              "properties": {}
+            }, { // 20th to 21st
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //s4 20th and harrison (mission rec)
-                    [-122.41258, 37.75894],
-                    [-122.412436, 37.758948],
-                    [-122.41238, 37.75839],
-                    [-122.412523, 37.758385]
+                    [-122.41258506063635,
+                      37.75885948369384
+                    ],
+                    [-122.41254649838305,
+                      37.758447302964
+                    ],
+                    [-122.41241034369787,
+                      37.758453818272855
+                    ],
+                    [-122.41244886661826,
+                      37.758868426616274
+                    ],
+                    [-122.41258506063635,
+                      37.75885948369384
+                    ]
                   ]
-                ]
-              }
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
             }] //end of features
           },
         }, //end of source
         "paint": {
-          "fill-color": "#0652DD",
+          "fill-color": "#6ADC07",
           "fill-opacity": 0.8
         }
       }); //end of sponsors layer
-
       this.map.addLayer({ //bathrooms layer
         "id": "bathrooms",
         "type": "line",
@@ -580,17 +660,20 @@ export class MapComponent implements OnInit {
                   [-122.41266, 37.76425]
                 ]
               }
-            }, {
-              "type": "Feature",
-              "properties": {},
+            }, { // 17th and harrison west
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //17th and harrison west
-                  [-122.41340, 37.76404],
-                  [-122.41327, 37.76410]
-                ]
-              }
+                  [-122.41334740343711,
+                    37.764065251585876
+                  ],
+                  [-122.41320787775052,
+                    37.76413124332082
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "properties": {},
@@ -602,39 +685,48 @@ export class MapComponent implements OnInit {
                   [-122.41365, 37.76349]
                 ]
               }
-            }, {
-              "type": "Feature",
-              "properties": {},
+            }, { // harrison and mariposa
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //Mariposa
-                  [-122.41265, 37.762907],
-                  [-122.41239, 37.76292]
-                ]
-              }
-            }, {
+                  [-122.412598358654,
+                    37.762913898063886
+                  ],
+                  [-122.41237937492663,
+                    37.762926392924015
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 18th and harrison
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //18th and Harrison
-                  [-122.41332, 37.76219],
-                  [-122.41295, 37.76221]
-                ]
-              }
-            }, {
+                  [-122.41304237911372,
+                    37.7622037933662
+                  ],
+                  [-122.41325947900982,
+                    37.762191566408134
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 18th and harrison (west)
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //18th and Harrison(west)
-                  [-122.41367, 37.76217],
-                  [-122.41341, 37.762185]
-                ]
-              }
+                  [-122.41355294055819,
+                    37.76217423411117
+                  ],
+                  [-122.41333755911919,
+                    37.7621869139295
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "properties": {},
@@ -734,28 +826,38 @@ export class MapComponent implements OnInit {
                   [-122.41198, 37.75748]
                 ]
               }
-            }, {
-              "type": "Feature",
-              "properties": {},
+            }, { // beer garden inner
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //21st & 22nd (beer garden)
-                  [-122.41234, 37.75666],
-                  [-122.412334, 37.75660]
-                ]
-              }
-            }, {
+                  [
+                    -122.41234559803702,
+                    37.75679163629276
+                  ],
+                  [
+                    -122.41233927000258,
+                    37.756718258190375
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // beer garden stage
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //22nd and Harrison (small)
-                  [-122.41227, 37.75597],
-                  [-122.4122657, 37.75592]
-                ]
-              }
+                  [
+                    -122.41226962366532,
+                    37.755969553880064
+                  ],
+                  [
+                    -122.41226118629118,
+                    37.75588616874536
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "properties": {},
@@ -786,11 +888,11 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#12CBC4",
-          "line-width": 5
+          "line-color": "#0041D7",
+          "line-width": 6,
+          "line-opacity": 0.8
         }
       }); // end of bathrooms layer
-    
       this.map.addLayer({ //stages layer
         "id": "stages",
         "type": "fill",
@@ -854,20 +956,36 @@ export class MapComponent implements OnInit {
                   ]
                 ]
               }
-            }, {
-              "type": "Feature",
+            }, { // beer garden stage
               "geometry": {
-                "type": "Polygon",
                 "coordinates": [
                   [
-                    //22nd and Harrison Stage
-                    [-122.41233, 37.75607],
-                    [-122.41216, 37.75608],
-                    [-122.412153, 37.75599],
-                    [-122.412323, 37.75598]
+                    [
+                      -122.41232502011785,
+                      37.756152720198074
+                    ],
+                    [
+                      -122.41231921942088,
+                      37.75608309664317
+                    ],
+                    [
+                      -122.41218316673368,
+                      37.7560901840739
+                    ],
+                    [
+                      -122.41218896743065,
+                      37.756158973813214
+                    ],
+                    [
+                      -122.41232502011785,
+                      37.756152720198074
+                    ]
                   ]
-                ]
-              }
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "geometry": {
@@ -886,11 +1004,10 @@ export class MapComponent implements OnInit {
           },
         }, //end of source
         "paint": {
-          "fill-color": "#ED4C67",
+          "fill-color": "#B806AD",
           "fill-opacity": 0.8
         }
-      }); //end of exhibits layer
-
+      }); //end of stages layer
       this.map.addLayer({ //ninolandia layer
         "id": "ninolandia",
         "type": "line",
@@ -898,18 +1015,21 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
-              "properties": {},
+            "features": [{
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //22nd & Harrison intersection
-                  [-122.41225, 37.75581],
-                  //23rd & Harrison intersection
-                  [-122.41210, 37.75427]
-                ]
-              }
-            }, ]
+                  [-122.41222433858312,
+                    37.75582369308914
+                  ],
+                  [-122.41207498059848,
+                    37.75425951423621
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
+            }]
           },
         },
         "layout": {
@@ -917,87 +1037,11 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#C4E538",
-          "line-width": 8
+          "line-color": "#FE5D4D",
+          "line-width": 8,
+          "line-opacity": 0.8
         }
       }); // end of ninolandia layer
-
-      this.map.addLayer({ //atms layer
-        //CHANGE TO MARKER
-        "id": "atms",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //17nd & Harrison ATMS 1-2
-                  [-122.413016, 37.764100],
-                  [-122.413016, 37.764053]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //18th and Harrison ATMS 3-4
-                  [-122.412785, 37.761633],
-                  [-122.412785, 37.761613]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //20th and Harrison ATMS 5-6
-                  [-122.412534, 37.759050],
-                  [-122.412534, 37.759095]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //21st & 22nd Block ATMS 7-8
-                  [-122.412275, 37.756610],
-                  [-122.4122835, 37.756675]
-
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //23rd & 24th Block ATMS 9-10
-                  [-122.411908, 37.752752],
-                  [-122.411906, 37.752735]
-                ]
-              }
-            }
-          ]},
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "butt"
-        },
-        "paint": {
-          "line-color": "#009432",
-          "line-width": 10
-        }
-      }); // end of atms layer
-
       this.map.addLayer({ //beverages layer
         "id": "beverages",
         "type": "line",
@@ -1005,39 +1049,51 @@ export class MapComponent implements OnInit {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{ "type": "Feature",
-              "properties": {},
+            "features": [{ // 17th and treat
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //17th & Treat Beverages
-                  [-122.413501, 37.763929],
-                  [-122.413480, 37.764010],
-                  [-122.41340, 37.76404],
-                ]
-              }
-            }, {
+                  [-122.41350755072068,
+                    37.763907167595505
+                  ],
+                  [-122.41347773753797,
+                    37.763998613473376
+                  ],
+                  [-122.4133990307416,
+                    37.76404292225618
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // harrison and mariposa
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //Mariposa st Beverages
-                  [-122.41288, 37.762891],
-                  [-122.41265, 37.762907]
-                ]
-              }
-            }, {
+                  [-122.4128448854279,
+                    37.76289997102917
+                  ],
+                  [-122.41266402111806,
+                    37.76291014649226
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 18th
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //18th st Beverages
-                  [-122.41387, 37.76216],
-                  [-122.41372, 37.762168]
-                ]
-              }
+                  [-122.41373264997846,
+                    37.76217969325498
+                  ],
+                  [-122.41361693973717,
+                    37.76218603316299
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "properties": {},
@@ -1049,17 +1105,22 @@ export class MapComponent implements OnInit {
                   [-122.41329, 37.75897]
                 ]
               }
-            }, {
-              "type": "Feature",
-              "properties": {},
+            }, { // beer garden 21st to 22nd
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  //21st-22nd Block Beverages
-                  [-122.412325, 37.75668],
-                  [-122.41229, 37.75628]
-                ]
-              }
+                  [
+                    -122.41233263132291,
+                    37.75667268627208
+                  ],
+                  [
+                    -122.41229888182113,
+                    37.756290785209345
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }, {
               "type": "Feature",
               "properties": {},
@@ -1071,70 +1132,6 @@ export class MapComponent implements OnInit {
                   [-122.41165, 37.75429]
                 ]
               }
-            }
-          ]},
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "butt"
-        },
-        "paint": {
-          "line-color": "#D980FA",
-          "line-width": 8
-        }
-      }); // end of beverages layer
-
-      this.map.addLayer({
-        "id": "food-booth",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  // 17th to mariposa
-                  [-122.412957033, 37.763682851],
-                  [-122.412889978, 37.762991596]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  // 19th to 19th
-                  [-122.412686130, 37.760633649],
-                  [-122.412645897, 37.760341021]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  // 20th to 21st
-                  [-122.412423274, 37.757961784],
-                  [-122.412396452, 37.757609769]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  // 21st to 22nd
-                  [-122.412377676, 37.757408314],
-                  [-122.412321350, 37.756854840]
-                ]
-              }
             }]
           },
         },
@@ -1143,87 +1140,375 @@ export class MapComponent implements OnInit {
           "line-cap": "butt"
         },
         "paint": {
-          "line-color": "#006266",
-          "line-width": 5
+          "line-color": "#F8E401",
+          "line-width": 6,
+          "line-opacity": 0.8
+        }
+      }); // end of beverages layer
+      this.map.addLayer({ //foodboth layer
+        "id": "food-booth",
+        "type": "fill",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ // 17th to mariposa
+              "geometry": {
+                "coordinates": [
+                  [
+                    [
+                      -122.41306164394156,
+                      37.76391073767827
+                    ],
+                    [
+                      -122.41297468419789,
+                      37.76300517271194
+                    ],
+                    [
+                      -122.41284203508651,
+                      37.76301196053748
+                    ],
+                    [
+                      -122.41292134767447,
+                      37.76391866085616
+                    ],
+                    [
+                      -122.41306164394156,
+                      37.76391073767827
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, { //19th to mistral
+              "geometry": {
+                "coordinates": [
+                  [
+                    [-122.41274357497461,
+                      37.760578919935625
+                    ],
+                    [-122.41260571995002,
+                      37.76058777891177
+                    ],
+                    [-122.41257805894591,
+                      37.76030940756479
+                    ],
+                    [-122.41271595424978,
+                      37.76030054132124
+                    ],
+                    [-122.41274357497461,
+                      37.760578919935625
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, { // 20th to 21st
+              "geometry": {
+                "coordinates": [
+                  [
+                    [-122.41249494911742,
+                      37.75796677776613
+                    ],
+                    [-122.41236170046854,
+                      37.75797480578177
+                    ],
+                    [-122.41233912679898,
+                      37.75769557931005
+                    ],
+                    [-122.41246763256154,
+                      37.75768645196504
+                    ],
+                    [-122.41249494911742,
+                      37.75796677776613
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, { // 21st to 22nd
+              "geometry": {
+                "coordinates": [
+                  [
+                    [-122.41243956789005,
+                      37.75736887430172
+                    ],
+                    [-122.41230658144588,
+                      37.75737573218724
+                    ],
+                    [-122.41226510490726,
+                      37.75695799854121
+                    ],
+                    [-122.4123990236754,
+                      37.75695217050236
+                    ],
+                    [-122.41243956789005,
+                      37.75736887430172
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "type": "Feature",
+              "properties": {}
+            }]
+          },
+        },
+        "paint": {
+          "fill-color": "#00B1FC",
+          "fill-opacity": 0.8
         }
       }); //end of food-booth layer
-
-      this.map.addLayer({
+      this.map.addLayer({ //foodtruck layer
         "id": "food-truck",
         "type": "line",
         "source": {
           "type": "geojson",
           "data": {
             "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "properties": {},
+            "features": [{ // 17th to mariposa north
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  // 17th to mariposa north
-                  [-122.412989220, 37.763873687],
-                  [-122.412978491, 37.763752824]
-                ]
-              }
-            }, {
+                  [-122.41299597652377,
+                    37.76401427813184
+                  ],
+                  [-122.4129908295767,
+                    37.76395645208635
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 17th to mariposa south
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  // 17th to mariposa south
-                  [-122.412903389, 37.762934345],
-                  [-122.412898025, 37.762847408]
-                ]
-              }
-            }, {
+                  [
+                    -122.41290058248352,
+                    37.7629650078037
+                  ],
+                  [
+                    -122.41289549024684,
+                    37.76290699161264
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 18th
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  // 18th
-                  [-122.412788054, 37.761628152],
-                  [-122.412777325, 37.761585743]
-                ]
-              }
-            }, {
+                  [
+                    -122.41277524842072,
+                    37.76158785370423
+                  ],
+                  [
+                    -122.41277083159433,
+                    37.7615458439753
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 21st north
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  // 20th to 21st
-                  [-122.412396452, 37.757609769],
-                  [-122.412377676, 37.757471931]
-                ]
-              }
-            }, {
+                  [-122.4123975081749,
+                    37.757633515609044
+                  ],
+                  [-122.4123919766892,
+                    37.75757491423346
+                  ]
+                ],
+                "type": "LineString"
+              },
               "type": "Feature",
-              "properties": {},
+              "properties": {}
+            }, { // 21st south
               "geometry": {
-                "type": "LineString",
                 "coordinates": [
-                  // 23rd
-                  [-122.411956569, 37.754252820],
-                  [-122.411894878, 37.754261303]
-                ]
-              }
+                  [-122.41238755149847,
+                    37.757532056405296
+                  ],
+                  [-122.41238202001273,
+                    37.75747345502971
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, { // 23rd
+              "geometry": {
+                "coordinates": [
+                  [-122.41198026484055,
+                    37.754248764612086
+                  ],
+                  [-122.41190315890636,
+                    37.754253261916105
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "type": "Feature",
+              "properties": {}
             }]
           },
         },
         "layout": {
           "line-join": "round",
-          "line-cap": "butt"
+          "line-cap": "round"
         },
         "paint": {
-          "line-color": "#5758BB",
+          "line-color": "#FE4101",
           "line-width": 5
         }
       }); // end of food-truck layer
-
+      this.map.addLayer({ //atm layer
+        "id": "atm",
+        "type": "circle",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{ // 17th
+              "geometry": {
+                "coordinates": [-122.41300066764212,
+                  37.76406698017338
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, { // 18th
+              "geometry": {
+                "coordinates": [
+                  -122.412780081994,
+                  37.761636586468384
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, {
+              "geometry": {
+                "coordinates": [
+                  // 20th
+                  -122.41252734755867,
+                  37.75902518103881
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }, {
+              "geometry": {
+                "coordinates": [
+                  // 24th
+                  -122.41197729942353,
+                  37.75324333712258
+                ],
+                "type": "Point"
+              },
+              "type": "Feature",
+              "properties": {}
+            }]
+          },
+        },
+        "paint": {
+          "circle-radius": 3,
+          "circle-color": "#A3CB38"
+        }
+      }); // end of atm layer
+      this.map.addLayer({ //lowriders layer
+        'id': 'lowriders',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              "coordinates": [
+                [
+                  [-122.41283707072746,
+                    37.759925940158794
+                  ],
+                  [-122.41278855581706,
+                    37.75947234800299
+                  ],
+                  [-122.41314503495866,
+                    37.75944900127243
+                  ],
+                  [-122.4131977685587,
+                    37.75990092595309
+                  ],
+                  [-122.41283707072746,
+                    37.759925940158794
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'fill-color': '#F91405',
+          'fill-opacity': 0.8
+        }
+      }); // end of lowriders layer
       //all features above
     });
   }
+
+  // Request permissions for geolocation & grab user location
+  private geoloc() {
+
+    if (navigator.geolocation) {
+      console.log('Geolocation is supported!');
+      var startPos;
+      var nudge = document.getElementById("nudge");
+
+      var showNudgeBanner = function () {
+        nudge.style.display = "block";
+      };
+
+      var hideNudgeBanner = function () {
+        nudge.style.display = "none";
+      };
+
+      var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+
+      var geoSuccess = function (position) {
+        hideNudgeBanner();
+        // We have the location, don't display banner
+        clearTimeout(nudgeTimeoutId);
+
+        // Do magic with location
+        startPos = position;
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+      };
+      var geoError = function (error) {
+        switch (error.code) {
+          case error.TIMEOUT:
+            // The user didn't accept the callout
+            showNudgeBanner();
+            break;
+        }
+      };
+      navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    } else {
+      console.log('Geolocation is not supported for this Browser/OS.');
+    }
+
+  };
 }

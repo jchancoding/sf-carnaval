@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
 import { MapComponent } from './map/map.component';
+import { ParadeComponent } from './parade/parade.component';
 import { FoodComponent } from './food/food.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { VendorsComponent } from './vendors/vendors.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'map', component: MapComponent},
+  { path: 'parade', component: ParadeComponent},
   { path: 'food', component: FoodComponent},
   { path: 'schedule', component: ScheduleComponent},
   { path: 'vendors', component: VendorsComponent}, 
