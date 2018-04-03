@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-vendors',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendors.component.scss']
 })
 export class VendorsComponent implements OnInit {
+  vendors;
 
-  constructor() { }
+  constructor(
+    private _api: ApiService
+  ) { }
 
   ngOnInit() {
+    this._api.getVendors().subscribe(response => {
+      this.vendors = response['data'];
+      
+    })
   }
 
 }

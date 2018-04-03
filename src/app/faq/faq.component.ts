@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-faq',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
+  faqs;
 
-  constructor() { }
+  constructor(
+    private _api: ApiService
+  ) { }
 
   ngOnInit() {
+    this._api.getFaqs().subscribe(response => {
+      this.faqs = response['data'];
+      
+    })
   }
 
 }
