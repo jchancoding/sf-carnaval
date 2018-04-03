@@ -35,7 +35,7 @@ import { ParadeComponent } from './parade/parade.component';
     DirectionsComponent,
     SponsorsComponent,
     HomeComponent,
-    FaqQuestionComponent
+    FaqQuestionComponent,
     ParadeComponent
   ],
   imports: [
