@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'; 
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,8 @@ import { VendorsComponent } from './vendors/vendors.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { DirectionsComponent } from './directions/directions.component';
 import { HomeComponent } from './home/home.component';
+import { ApiService } from './api.service';
+import { FaqQuestionComponent } from './faq-question/faq-question.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +33,15 @@ import { HomeComponent } from './home/home.component';
     SponsorsComponent, 
     DirectionsComponent,
     SponsorsComponent,
-    HomeComponent
+    HomeComponent,
+    FaqQuestionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
