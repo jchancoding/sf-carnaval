@@ -1009,37 +1009,45 @@ export class MapComponent implements OnInit {
         }
       }); //end of stages layer
       this.map.addLayer({ //ninolandia layer
-        "id": "ninolandia",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{
-              "geometry": {
-                "coordinates": [
-                  [-122.41222433858312,
-                    37.75582369308914
+        'id': 'ninolandia',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              "coordinates": [
+                [
+                  [
+                    -122.4122892363515,
+                    37.755772069202635
                   ],
-                  [-122.41207498059848,
-                    37.75425951423621
+                  [
+                    -122.41215192954525,
+                    37.755780583086874
+                  ],
+                  [
+                    -122.4120181770346,
+                    37.754308323377046
+                  ],
+                  [
+                    -122.41214485260596,
+                    37.75429980947314
+                  ],
+                  [
+                    -122.4122892363515,
+                    37.755772069202635
                   ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }]
-          },
+                ]
+              ]
+            }
+          }
         },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "butt"
-        },
-        "paint": {
-          "line-color": "#FE5D4D",
-          "line-width": 8,
-          "line-opacity": 0.8
+        'layout': {},
+        'paint': {
+          'fill-color': '#FE5D4D',
+          'fill-opacity': 0.8
         }
       }); // end of ninolandia layer
       this.map.addLayer({ //beverages layer

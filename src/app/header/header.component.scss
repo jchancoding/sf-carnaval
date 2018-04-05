@@ -5,9 +5,9 @@
     width: auto;
 }
 .logobox {
-    height: 180px;
+    height: 460px;
     width: 100%;
-    background-image: url("/assets/images/shitBan.jpg");
+    background-image: url("/assets/images/roundBan.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -25,9 +25,9 @@
 }
 nav {
     background-image: url("/assets/images/navText.jpg");
-    background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center top;
 }
 .nav-link {
     color: black;

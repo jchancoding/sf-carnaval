@@ -1,24 +1,11 @@
 <div class="container">
-  <h1 class="text-center">FAQ's</h1>
+  <h1 class="text-center faqHD">FAQ</h1>
   <div class="row">
-    <div class="col-sm-6">
-      <h6>Example question:</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam consequatur facilis dicta deserunt veniam ea vero
-        recusandae cum consectetur eius id cumque iusto asperiores in, esse quam soluta exercitationem aspernatur.</p>
-      <h6>Example question:</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam consequatur facilis dicta deserunt veniam ea vero
-        recusandae cum consectetur eius id cumque iusto asperiores in, esse quam soluta exercitationem aspernatur.</p>
-      <h6>Example question:</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam consequatur facilis dicta deserunt veniam ea vero
-        recusandae cum consectetur eius id cumque iusto asperiores in, esse quam soluta exercitationem aspernatur.</p>
+    <div class="col-md-6">
+      <app-faq-question *ngFor="let faq of faq_l" [faq]="faq"></app-faq-question>
     </div>
-    <div class="col-sm-6">
-      <h6>Example question:</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam consequatur facilis dicta deserunt veniam ea vero
-        recusandae cum consectetur eius id cumque iusto asperiores in, esse quam soluta exercitationem aspernatur.</p>
-      <h6>Example question:</h6>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam consequatur facilis dicta deserunt veniam ea vero
-        recusandae cum consectetur eius id cumque iusto asperiores in, esse quam soluta exercitationem aspernatur.</p>
+    <div class="col-md-6">
+        <app-faq-question *ngFor="let faq of faq_r" [faq]="faq"></app-faq-question>
     </div>
   </div>
 </div>
