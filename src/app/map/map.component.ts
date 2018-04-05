@@ -21,7 +21,7 @@ export class MapComponent implements OnInit {
 
   // Component attributes
   // Map theme
-  @Input() style = 'mapbox://styles/mapbox/streets-v8';
+  @Input() style = 'mapbox://styles/anilad/cjfajrz4c71qn2tkasuwl9p7a';
 
   // Ask for location and fly to it
   @Input() geolocation = false;
@@ -86,96 +86,96 @@ export class MapComponent implements OnInit {
       this.loading = false;
 
       //venue layers from below this point
-      this.map.addLayer({ //entrances layer
-        "id": "entrances",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{ // harrison and treat
-              "geometry": {
-                "coordinates": [
-                  [-122.41319498358952,
-                    37.76499934234809
-                  ],
-                  [-122.41300261205764,
-                    37.76501008230909
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 18th and treat
-              "geometry": {
-                "coordinates": [
-                  [-122.41387973493144,
-                    37.76224759161056
-                  ],
-                  [-122.41386546470424,
-                    37.762095319703306
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 20th and treat
-              "geometry": {
-                "coordinates": [
-                  [-122.41352096295195,
-                    37.75905716406815
-                  ],
-                  [-122.4135063040141,
-                    37.75890478676594
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 23rd and treat
-              "geometry": {
-                "coordinates": [
-                  [-122.41305051770722,
-                    37.754256213626704
-                  ],
-                  [-122.41303417953634,
-                    37.75410311504902
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 24th and harrison
-              "geometry": {
-                "coordinates": [
-                  [-122.41206198326029,
-                    37.75312241014565
-                  ],
-                  [-122.41187008035057,
-                    37.75313386136776
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }] //end of features
-          },
-        }, //end of source
-        "layout": {
-          "line-join": "round",
-          "line-cap": "round"
-        },
-        "paint": {
-          "line-color": "#F76C04",
-          "line-width": 7,
-          "line-opacity": 0.8
-        }
-      }); //end of entrances layer
+      // this.map.addLayer({ //entrances layer
+      //   "id": "entrances",
+      //   "type": "line",
+      //   "source": {
+      //     "type": "geojson",
+      //     "data": {
+      //       "type": "FeatureCollection",
+      //       "features": [{ // harrison and treat
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41319498358952,
+      //               37.76499934234809
+      //             ],
+      //             [-122.41300261205764,
+      //               37.76501008230909
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 18th and treat
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41387973493144,
+      //               37.76224759161056
+      //             ],
+      //             [-122.41386546470424,
+      //               37.762095319703306
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 20th and treat
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41352096295195,
+      //               37.75905716406815
+      //             ],
+      //             [-122.4135063040141,
+      //               37.75890478676594
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 23rd and treat
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41305051770722,
+      //               37.754256213626704
+      //             ],
+      //             [-122.41303417953634,
+      //               37.75410311504902
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 24th and harrison
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41206198326029,
+      //               37.75312241014565
+      //             ],
+      //             [-122.41187008035057,
+      //               37.75313386136776
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }] //end of features
+      //     },
+      //   }, //end of source
+      //   "layout": {
+      //     "line-join": "round",
+      //     "line-cap": "round"
+      //   },
+      //   "paint": {
+      //     "line-color": "#F76C04",
+      //     "line-width": 7,
+      //     "line-opacity": 0.8
+      //   }
+      // }); //end of entrances layer
       this.map.addLayer({ //exhibits layer
         "id": "exhibits",
         "type": "fill",
@@ -631,268 +631,268 @@ export class MapComponent implements OnInit {
           "fill-opacity": 0.8
         }
       }); //end of sponsors layer
-      this.map.addLayer({ //bathrooms layer
-        "id": "bathrooms",
-        "type": "line",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //treat and harrison north
-                  [-122.41326, 37.76526],
-                  [-122.41331, 37.76509]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //17th and harrison east
-                  [-122.41287, 37.76424],
-                  [-122.41266, 37.76425]
-                ]
-              }
-            }, { // 17th and harrison west
-              "geometry": {
-                "coordinates": [
-                  [-122.41334740343711,
-                    37.764065251585876
-                  ],
-                  [-122.41320787775052,
-                    37.76413124332082
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //17th and treat
-                  [-122.413596, 37.76373],
-                  [-122.41365, 37.76349]
-                ]
-              }
-            }, { // harrison and mariposa
-              "geometry": {
-                "coordinates": [
-                  [-122.412598358654,
-                    37.762913898063886
-                  ],
-                  [-122.41237937492663,
-                    37.762926392924015
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 18th and harrison
-              "geometry": {
-                "coordinates": [
-                  [-122.41304237911372,
-                    37.7622037933662
-                  ],
-                  [-122.41325947900982,
-                    37.762191566408134
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 18th and harrison (west)
-              "geometry": {
-                "coordinates": [
-                  [-122.41355294055819,
-                    37.76217423411117
-                  ],
-                  [-122.41333755911919,
-                    37.7621869139295
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //19th west
-                  [-122.41318, 37.760627],
-                  [-122.41294, 37.76064]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //19th east
-                  [-122.41247, 37.760367],
-                  [-122.41219, 37.76038]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //Mistral
-                  [-122.41313, 37.760028],
-                  [-122.41287, 37.760043]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //Mistral (indoors)
-                  [-122.41345, 37.759798],
-                  [-122.41326, 37.75981]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //20th (west most)
-                  [-122.41316, 37.75901],
-                  [-122.41297, 37.75902]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //20th (west)
-                  [-122.41282, 37.759057],
-                  [-122.41259, 37.75907]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //20th (east)
-                  [-122.41217, 37.75908],
-                  [-122.41206, 37.759086]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //21st (west)
-                  [-122.41292, 37.75739],
-                  [-122.41260, 37.757406]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //21st (east)
-                  [-122.41220, 37.757468],
-                  [-122.41198, 37.75748]
-                ]
-              }
-            }, { // beer garden inner
-              "geometry": {
-                "coordinates": [
-                  [
-                    -122.41234559803702,
-                    37.75679163629276
-                  ],
-                  [
-                    -122.41233927000258,
-                    37.756718258190375
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // beer garden stage
-              "geometry": {
-                "coordinates": [
-                  [
-                    -122.41226962366532,
-                    37.755969553880064
-                  ],
-                  [
-                    -122.41226118629118,
-                    37.75588616874536
-                  ]
-                ],
-                "type": "LineString"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //22nd and Harrison (east)
-                  [-122.41200, 37.75587],
-                  [-122.41186, 37.755878]
-                ]
-              }
-            }, {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  //23rd and Harrison (small)
-                  [-122.41237, 37.75424],
-                  [-122.41220, 37.75425]
-                ]
-              }
-            }]
-          },
-        },
-        "layout": {
-          "line-join": "round",
-          "line-cap": "butt"
-        },
-        "paint": {
-          "line-color": "#0041D7",
-          "line-width": 6,
-          "line-opacity": 0.8
-        }
-      }); // end of bathrooms layer
+      // this.map.addLayer({ //bathrooms layer
+      //   "id": "bathrooms",
+      //   "type": "line",
+      //   "source": {
+      //     "type": "geojson",
+      //     "data": {
+      //       "type": "FeatureCollection",
+      //       "features": [{
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //treat and harrison north
+      //             [-122.41326, 37.76526],
+      //             [-122.41331, 37.76509]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //17th and harrison east
+      //             [-122.41287, 37.76424],
+      //             [-122.41266, 37.76425]
+      //           ]
+      //         }
+      //       }, { // 17th and harrison west
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41334740343711,
+      //               37.764065251585876
+      //             ],
+      //             [-122.41320787775052,
+      //               37.76413124332082
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //17th and treat
+      //             [-122.413596, 37.76373],
+      //             [-122.41365, 37.76349]
+      //           ]
+      //         }
+      //       }, { // harrison and mariposa
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.412598358654,
+      //               37.762913898063886
+      //             ],
+      //             [-122.41237937492663,
+      //               37.762926392924015
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 18th and harrison
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41304237911372,
+      //               37.7622037933662
+      //             ],
+      //             [-122.41325947900982,
+      //               37.762191566408134
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // 18th and harrison (west)
+      //         "geometry": {
+      //           "coordinates": [
+      //             [-122.41355294055819,
+      //               37.76217423411117
+      //             ],
+      //             [-122.41333755911919,
+      //               37.7621869139295
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //19th west
+      //             [-122.41318, 37.760627],
+      //             [-122.41294, 37.76064]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //19th east
+      //             [-122.41247, 37.760367],
+      //             [-122.41219, 37.76038]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //Mistral
+      //             [-122.41313, 37.760028],
+      //             [-122.41287, 37.760043]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //Mistral (indoors)
+      //             [-122.41345, 37.759798],
+      //             [-122.41326, 37.75981]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //20th (west most)
+      //             [-122.41316, 37.75901],
+      //             [-122.41297, 37.75902]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //20th (west)
+      //             [-122.41282, 37.759057],
+      //             [-122.41259, 37.75907]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //20th (east)
+      //             [-122.41217, 37.75908],
+      //             [-122.41206, 37.759086]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //21st (west)
+      //             [-122.41292, 37.75739],
+      //             [-122.41260, 37.757406]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //21st (east)
+      //             [-122.41220, 37.757468],
+      //             [-122.41198, 37.75748]
+      //           ]
+      //         }
+      //       }, { // beer garden inner
+      //         "geometry": {
+      //           "coordinates": [
+      //             [
+      //               -122.41234559803702,
+      //               37.75679163629276
+      //             ],
+      //             [
+      //               -122.41233927000258,
+      //               37.756718258190375
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, { // beer garden stage
+      //         "geometry": {
+      //           "coordinates": [
+      //             [
+      //               -122.41226962366532,
+      //               37.755969553880064
+      //             ],
+      //             [
+      //               -122.41226118629118,
+      //               37.75588616874536
+      //             ]
+      //           ],
+      //           "type": "LineString"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //22nd and Harrison (east)
+      //             [-122.41200, 37.75587],
+      //             [-122.41186, 37.755878]
+      //           ]
+      //         }
+      //       }, {
+      //         "type": "Feature",
+      //         "properties": {},
+      //         "geometry": {
+      //           "type": "LineString",
+      //           "coordinates": [
+      //             //23rd and Harrison (small)
+      //             [-122.41237, 37.75424],
+      //             [-122.41220, 37.75425]
+      //           ]
+      //         }
+      //       }]
+      //     },
+      //   },
+      //   "layout": {
+      //     "line-join": "round",
+      //     "line-cap": "butt"
+      //   },
+      //   "paint": {
+      //     "line-color": "#0041D7",
+      //     "line-width": 6,
+      //     "line-opacity": 0.8
+      //   }
+      // }); // end of bathrooms layer
       this.map.addLayer({ //stages layer
         "id": "stages",
         "type": "fill",
@@ -1380,62 +1380,63 @@ export class MapComponent implements OnInit {
           "line-width": 5
         }
       }); // end of food-truck layer
-      this.map.addLayer({ //atm layer
-        "id": "atm",
-        "type": "circle",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{ // 17th
-              "geometry": {
-                "coordinates": [-122.41300066764212,
-                  37.76406698017338
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 18th
-              "geometry": {
-                "coordinates": [
-                  -122.412780081994,
-                  37.761636586468384
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "geometry": {
-                "coordinates": [
-                  // 20th
-                  -122.41252734755867,
-                  37.75902518103881
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "geometry": {
-                "coordinates": [
-                  // 24th
-                  -122.41197729942353,
-                  37.75324333712258
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }]
-          },
-        },
-        "paint": {
-          "circle-radius": 3,
-          "circle-color": "#A3CB38"
-        }
-      }); // end of atm layer
+      // this.map.addLayer({ //atm layer
+      //   "id": "atm",
+      //   "type": "circle",
+      //   "source": {
+      //     "type": "geojson",
+      //     "data": {
+      //       "type": "FeatureCollection",
+      //       "features": [{ // 17th
+      //         "geometry": {
+      //           "coordinates": [-122.41300066764212,
+      //             37.76406698017338
+      //           ],
+      //           "type": "Point"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "geometry": {
+      //           "coordinates": [
+      //             // 19th
+      //             -122.41277927232473,
+      //             37.76162007034719
+      //           ],
+      //           "type": "Point"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "geometry": {
+      //           "coordinates": [
+      //             // 20th
+      //             -122.41252734755867,
+      //             37.75902518103881
+      //           ],
+      //           "type": "Point"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }, {
+      //         "geometry": {
+      //           "coordinates": [
+      //             // 24th
+      //             -122.41197729942353,
+      //             37.75324333712258
+      //           ],
+      //           "type": "Point"
+      //         },
+      //         "type": "Feature",
+      //         "properties": {}
+      //       }]
+      //     },
+      //   },
+      //   "paint": {
+      //     "circle-radius": 4,
+      //     "circle-color": "#A3CB38"
+      //   }
+      // }); // end of atm layer
       this.map.addLayer({ //lowriders layer
         'id': 'lowriders',
         'type': 'fill',
