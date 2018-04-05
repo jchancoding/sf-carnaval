@@ -1372,64 +1372,6 @@ export class MapComponent implements OnInit {
           "line-width": 5
         }
       }); // end of food-truck layer
-<<<<<<< HEAD
-      this.map.addLayer({ //atm layer
-        "id": "atm",
-        "type": "circle",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{ // 17th
-              "geometry": {
-                "coordinates": [-122.41300066764212,
-                  37.76406698017338
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, { // 18th
-              "geometry": {
-                "coordinates": [
-                  -122.412780081994,
-                  37.761636586468384
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "geometry": {
-                "coordinates": [
-                  // 20th
-                  -122.41252734755867,
-                  37.75902518103881
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }, {
-              "geometry": {
-                "coordinates": [
-                  // 24th
-                  -122.41197729942353,
-                  37.75324333712258
-                ],
-                "type": "Point"
-              },
-              "type": "Feature",
-              "properties": {}
-            }]
-          },
-        },
-        "paint": {
-          "circle-radius": 3,
-          "circle-color": "#A3CB38"
-        }
-      }); // end of atm layer
-=======
       // this.map.addLayer({ //atm layer
       //   "id": "atm",
       //   "type": "circle",
@@ -1487,7 +1429,6 @@ export class MapComponent implements OnInit {
       //     "circle-color": "#A3CB38"
       //   }
       // }); // end of atm layer
->>>>>>> map
       this.map.addLayer({ //lowriders layer
         'id': 'lowriders',
         'type': 'fill',
