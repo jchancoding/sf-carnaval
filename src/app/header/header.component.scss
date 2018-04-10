@@ -1,34 +1,42 @@
 @import "../../variables";
 
-#logo {
-    height: 300px;
-    width: auto;
-}
-.logobox {
-    height: 460px;
-    width: 100%;
-    background-image: url("/assets/images/roundBan.png");
+  .logobox {
+    background-image: url("/assets/images/topMob2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
-}
-.jumbotron {
-    position: relative;
-    background-image: url("/assets/images/crowd.jpg");
+    background-position: center bottom;
+  }
+  nav {
+    background-image: url("/assets/images/botMob2.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding: 14%;
-    height: 380px;
-    color: $white;
-    text-shadow: 3px 2px $red;
-}
-nav {
-    background-image: url("/assets/images/navText.jpg");
-    background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center top;
+    background-attachment: scroll;
+  }
+
+#logo {
+  height: 300px;
+  width: auto;
 }
+
+// .jumbotron {
+//     position: relative;
+//     background-image: url("/assets/images/crowd.jpg");
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     padding: 14%;
+//     height: 380px;
+//     color: $white;
+//     text-shadow: 3px 2px $red;
+// }
+
 .nav-link {
-    color: black;
+  color: black;
+}
+
+img {
+  width: auto;
+  height: 200px;
+  object-fit: cover;
 }
