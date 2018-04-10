@@ -2,8 +2,21 @@
   <div class="row justify-content-center">
     <h1 class="text-center sponsorsHD">Our Sponsors</h1>
   </div>
-  {{ sponsors | json }}
+  <h3 class="lead">Thank You to Our Presenting Sponsor:</h3>
   <hr>
+  <div class="row">
+    <app-sponsor-each *ngFor="let sponsor of gold_sponsors" [sponsor]="sponsor"></app-sponsor-each>
+    <div class="col-12 col-sm-6 col-md-3 text-center">
+      <a href="http://cwsanfrancisco.cbslocal.com/" target="_blank">
+        <img src="https://apps.cdnini.com/i/7693631fe920a90b23a94adc865214058b900ac4.jpg" alt="The CW">
+      </a>
+    </div>
+  </div>
+  <hr>
+  <app-sponsor-each *ngFor="let sponsor of silver_sponsors" [sponsor]="sponsor"></app-sponsor-each>
+  <hr>
+  <app-sponsor-each *ngFor="let sponsor of bronze_sponsors" [sponsor]="sponsor"></app-sponsor-each>
+
   <div class="row justify-content-center">
     <div class="col-md-12 text-center">
       <h3 class="lead">Thank You to Our Presenting Sponsor:</h3>
@@ -14,11 +27,6 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-3 text-center">
-      <a href="http://sanfrancisco.cbslocal.com/" target="_blank">
-        <img src="https://apps.cdnini.com/i/b82a61c2a09458969dadbb9e9d4c4daa476683c6.jpg" alt="CBS">
-      </a>
-    </div>
     <div class="col-12 col-sm-6 col-md-3 text-center">
       <a href="http://cwsanfrancisco.cbslocal.com/" target="_blank">
         <img src="https://apps.cdnini.com/i/7693631fe920a90b23a94adc865214058b900ac4.jpg" alt="The CW">

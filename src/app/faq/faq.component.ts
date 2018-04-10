@@ -20,16 +20,20 @@ export class FaqComponent implements OnInit {
     obs.subscribe(data => {
       // Pulls FAQ's from DB
       this.faqs = data['data'];
-      // Sorts FAQ's for better viewing
-      for(var i=0; i<this.faqs.length; i++){
-        if(i%2==0){
-          this.faq_l.push(this.faqs[i]);
-        } else {
-          this.faq_r.push(this.faqs[i]);
-        }
-      }
+      this.splitFAQs();
     })
 
+  }
+
+  // Sorts FAQ's for better viewing
+  splitFAQs(){
+    for(var i=0; i<this.faqs.length; i++){
+      if(i%2==0){
+        this.faq_l.push(this.faqs[i]);
+      } else {
+        this.faq_r.push(this.faqs[i]);
+      }
+    }
   }
 
 }
