@@ -20,6 +20,7 @@ import { ApiService } from './api.service';
 import { FaqQuestionComponent } from './faq-question/faq-question.component';
 import { ParadeComponent } from './parade/parade.component';
 import { ScheduleEventComponent } from './schedule-event/schedule-event.component';
+import { ArtistsComponent } from './artists/artists.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ScheduleEventComponent } from './schedule-event/schedule-event.componen
     HomeComponent,
     FaqQuestionComponent,
     ParadeComponent,
-    ScheduleEventComponent
+    ScheduleEventComponent,
+    ArtistsComponent
   ],
   imports: [
     BrowserModule,
