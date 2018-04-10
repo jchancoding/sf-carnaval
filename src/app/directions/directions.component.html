@@ -49,4 +49,29 @@
       </div>
     </div>
   </div>
+  <!-- ////////////// Parking directions ////////////////// -->
+  <hr>
+  <div class="row justify-content-center">
+    <h3 class="text-center driveHD">Parking</h3>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 text-center" *ngFor="let direction of parkingDirections; let i = index">
+      <div class="card mb-2">
+        <!-- <br *ngIf="i==2"> -->
+        <div class="imageContainer">
+          <div class="imageHolder">
+            <a href={{direction.link}}>
+              <img class="card-img-top customImage" src={{direction.img}} alt="filler img">
+            </a>
+          </div>
+        </div>
+        <h5 class="card-header">
+          <a href={{direction.link}}>{{direction.header}}</a>
+        </h5>
+        <div class="card-body">
+          <p class="card-text">{{direction.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
