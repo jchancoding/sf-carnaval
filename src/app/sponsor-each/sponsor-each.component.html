@@ -1,10 +1,5 @@
-<div class="col-12 col-sm-6 col-md-3 text-center">
   <a href="http://{{ sponsor.website }}" target="_blank">
-    <img src="{{ sponsor.logo_thumbnail }}" alt="{{ sponsor.name }}">
+    <img *ngIf="sponsor.featured === 'Gold'" src="{{ sponsor.logo_thumbnail }}" alt="{{ sponsor.name }}" width="360px">
+    <img *ngIf="sponsor.featured === 'Silver'" src="{{ sponsor.logo_thumbnail }}" alt="{{ sponsor.name }}" width="240px">
+    <img *ngIf="sponsor.featured === 'Bronze'" src="{{ sponsor.logo_thumbnail }}" alt="{{ sponsor.name }}" width="180px">    
   </a>
-</div>
-<div class="col-12 col-sm-6 col-md-3 text-center">
-  <a href="http://cwsanfrancisco.cbslocal.com/" target="_blank">
-    <img src="https://apps.cdnini.com/i/7693631fe920a90b23a94adc865214058b900ac4.jpg" alt="The CW">
-  </a>
-</div>

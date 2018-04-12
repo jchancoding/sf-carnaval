@@ -11,7 +11,6 @@ export class SponsorEachComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.sponsor)
   }
 
 }
